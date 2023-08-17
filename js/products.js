@@ -28,15 +28,18 @@ function mostrarProducto(urlImagen, nombre, precio, descripcion, cantVendidos, s
     const nombreP = document.createElement('h2');
     nombreP.textContent = nombre;
     divProducto.appendChild(nombreP);
-
-    const descripcionP = document.createElement('p');
-    descripcionP.textContent = descripcion;
-    divProducto.appendChild(descripcionP);
-
+    nombreP.classList.add("nombre");
+    
     const precioP = document.createElement('p');
     precioP.textContent = `${simboloMoneda} ${precio}`;
     precioP.classList.add("precioProducto");
     divProducto.appendChild(precioP);
+
+    const descripcionP = document.createElement('p');
+    descripcionP.textContent = descripcion;
+    descripcionP.id="descripcion"
+    divProducto.appendChild(descripcionP);
+
 
     const cantVendidosP = document.createElement('p');
     cantVendidosP.textContent = `Vendidos: ${cantVendidos}`;
