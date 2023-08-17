@@ -12,8 +12,7 @@ body{
 	font-size: 16px;
 	color: rgb(255, 251, 251);
 	font-family: sans-serif;
-	background-image:url(/img/login.png);
-										
+	background: linear-gradient(0deg, orange,white );
 	background-position: center;
 	background-size: cover;
 	font-weight: 300;
