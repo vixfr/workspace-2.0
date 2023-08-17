@@ -8,7 +8,7 @@
   
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link href="css/styles.css" rel="stylesheet">
+  <link href="css/login.css" rel="stylesheet">
   <style>
     body {
       background-color: rgb(248, 249, 250);
@@ -18,16 +18,26 @@
 
 <body>
   <main class="mt-5">
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+      <div class="login-box">
+
+        <div class="left-box">
+          <h1>Iniciar secion</h1>
+          <form  action="" method="POST" id="box-form">
+            <input type="text" name="user" id="txt-user" class="input-box" placeholder="Usuario" required>
+    
+            <input type="password" name="password" id="txt-password" class="input-box" placeholder="Contraseña" required>
+    
+            <input type="submit" name="entrar" value="Entrar">
+    
+          </form>
+        </div>		
       </div>
     </div>
   </main>
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
-        <a href="#">Volver arriba</a>
+        
       </p>
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>

@@ -39,3 +39,23 @@ let getJSONData = function(url){
         return result;
     });
 }
+document.addEventListener("DOMContentLoaded", function() {
+  
+  const authToken = localStorage.getItem("authToken");
+
+  if (!authToken) {
+     
+      window.location.href = "login.html";
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+  const logoutButton = document.getElementById("logoutButton");
+
+  logoutButton.addEventListener("click", function() {
+     
+      localStorage.removeItem("authToken"); 
+      
+      window.location.href = "login.html";
+  });
+});  
