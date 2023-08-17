@@ -1,34 +1,8 @@
-/*ESTILOS PARA LOS PRODUCTOS*/
-.contProducto {
-  background: linear-gradient( 90deg, rgb(76, 75, 75),rgb(255, 255, 255));
-  margin: 10px;
-  height: 20vw;
-}
-.imgProducto {
-  height: 20vw;
-  float: left;
-  margin-right: 10px;
-}
-.contProducto h2{
-  font-size: 3vw;
-  margin-bottom: 0.5vw;
-  color: rgb(10, 91, 89);
-}
-.contProducto p{
-  font-size:  1.5vw;
-  margin: 1vw 1vw;
-}
-.precioProducto{
-  color: rgb(0, 255, 94);
-  text-shadow: 0px 0px 10px rgb(10, 91, 89);
-}
-
-/*ESTILOS POR DEFECTO*/
 .jumbotron,
 .card-body,
 .container,
 .site-header {
-  font-family: "Verdana", serif !important;
+  font-family: 'Verdana', serif !important;
 }
 
 .jumbotron .display-4 {
@@ -58,8 +32,8 @@ nav a {
   height: 50vh;
   padding: 5em inherit;
   margin-bottom: 0;
-  background-color: #53c0fb;
-  background: url("../img/cover_back.png");
+  background-color: #53C0FB;
+  background: url('../img/cover_back.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -99,12 +73,12 @@ footer {
 }
 
 footer p {
-  margin-bottom: 0.25rem;
+  margin-bottom: .25rem;
 }
 
 .site-header a {
   color: white;
-  transition: ease-in-out color 0.15s;
+  transition: ease-in-out color .15s;
 }
 
 .site-header .dropdown-menu a {
@@ -112,7 +86,7 @@ footer p {
 }
 
 .dropzone {
-  border: 2px dashed #0087f7;
+  border: 2px dashed #0087F7;
   border-radius: 5px;
   background: white;
 }
@@ -203,12 +177,80 @@ footer p {
 
 main {
   min-height: calc(100vh - 210px);
+  font-family: Arial, Helvetica, sans-serif;
 }
+
 a.custom-card,
 a.custom-card:hover {
   color: inherit;
   text-decoration: inherit;
 }
+
 .checked {
   color: orange;
+}
+
+.imagen{
+  width: 30%; /* Tamaño de la imagen, ajusta según tus necesidades */
+  margin-right: 20px; /* Espacio entre la imagen y el texto */
+padding: 5px;
+border: 2px whitesmoke solid;
+margin: 10px;
+
+}
+
+.product { /*div que contiene todo*/
+border:rgba(200, 220, 200, 0.5) 0.7px solid;
+display: flex;
+align-items:flex-start; /* Centrar verticalmente los elementos */
+font-style: italic;
+margin-top: 10px;
+}
+
+.product:hover{
+  background-color: rgba(200, 220, 200, 0.5);
+}
+
+.info{
+  flex: 1; /* Ocupa el espacio restante disponible */
+ 
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.vendidos{
+padding: 0.5em;
+margin: 0.5em;
+}
+
+#barra{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.titulo{
+  text-align: center;
+margin: 0.5em;
+font-size: 2em;
+
+}
+
+.subtitulo{
+  text-align: center;
+  margin: 1em;
+  font-size: 1.5em;
+  
+}
+
+.name{
+  display: flex;
+justify-content: flex-start;
+margin-right: 20px;
+
+}
+
+.price{
+  display: flex;
+  justify-content: flex-start;
+  
 }
