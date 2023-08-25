@@ -1,6 +1,8 @@
-const datosAutos = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+const IdLocalStorage = localStorage.getItem("catID");
+const datosAutos = "https://japceibal.github.io/emercado-api/cats_products/" + IdLocalStorage + ".json";
 
 document.addEventListener('DOMContentLoaded', () => {
+    const IdProductosUsd = ['101']
     fetch(datosAutos)
         .then(response => {
             if (!response.ok) {
@@ -9,8 +11,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return response.json();
         })
         .then(data => {
-            for (modeloAuto of data.products) {
-                mostrarProducto(modeloAuto.image, modeloAuto.name, modeloAuto.cost, modeloAuto.description, modeloAuto.soldCount, "USD");
+            if (data.products.length === 0) {
+                const container = document.getElementById('pb-5-container');
+                const avisoH2 = document.createElement('h2');
+                avisoH2.id = "avisoNoProductos"
+                avisoH2.textContent = "No hay productos para mostrar";
+                container.appendChild(avisoH2);
+            } else {
+                for (producto of data.products) {
+                    if (IdProductosUsd.includes(IdLocalStorage)) {
+                        mostrarProducto(producto.image, producto.name, producto.cost, producto.description, producto.soldCount, "USD");
+                    } else {
+                        mostrarProducto(producto.image, producto.name, producto.cost, producto.description, producto.soldCount, "$");
+                    }
+                }
             }
         });
 });
@@ -29,7 +43,7 @@ function mostrarProducto(urlImagen, nombre, precio, descripcion, cantVendidos, s
     nombreP.textContent = nombre;
     divProducto.appendChild(nombreP);
     nombreP.classList.add("nombre");
-    
+
     const precioP = document.createElement('p');
     precioP.textContent = `${simboloMoneda} ${precio}`;
     precioP.classList.add("precioProducto");
@@ -37,7 +51,7 @@ function mostrarProducto(urlImagen, nombre, precio, descripcion, cantVendidos, s
 
     const descripcionP = document.createElement('p');
     descripcionP.textContent = descripcion;
-    descripcionP.id="descripcion"
+    descripcionP.id = "descripcion"
     divProducto.appendChild(descripcionP);
 
 

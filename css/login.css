@@ -13,6 +13,7 @@ body{
 	color: rgb(255, 251, 251);
 	font-family: sans-serif;
 	background: linear-gradient(0deg, orange,white );
+	background: no-repeat;
 	background-position: center;
 	background-size: cover;
 	font-weight: 300;

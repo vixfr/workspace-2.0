@@ -41,20 +41,20 @@ let getJSONData = function(url){
 }
 document.addEventListener("DOMContentLoaded", function() {
   
-  const authToken = localStorage.getItem("authToken");
+  const user = localStorage.getItem("user");
 
-  if (!authToken) {
+  if (!user) {
      
       window.location.href = "login.html";
   }
 });
 
 document.addEventListener("DOMContentLoaded", function() {
-  const logoutButton = document.getElementById("logoutButton");
+  const logoutButton = document.getElementById("cerrarSesion");
 
   logoutButton.addEventListener("click", function() {
      
-      localStorage.removeItem("authToken"); 
+      localStorage.removeItem("user"); 
       
       window.location.href = "login.html";
   });

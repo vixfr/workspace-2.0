@@ -11,4 +11,6 @@ document.addEventListener("DOMContentLoaded", function(){
         localStorage.setItem("catID", 103);
         window.location = "products.html"
     });
+    const logoutButton = document.getElementById("logoutButton");
+    logoutButton.textContent = localStorage.getItem("usuario");
 });
