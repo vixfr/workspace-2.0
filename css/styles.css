@@ -38,6 +38,9 @@
   padding: 0;
  
 }
+.opcionesUsuario focus: {
+  outline:none;
+}
 #cerrarSesion{
   margin-left: 15px;
 }
@@ -49,7 +52,10 @@ background-color: #212529;
   border: none;
   text-align: left;
   padding-left: 0;
+  
 }
+
+
 
 
 

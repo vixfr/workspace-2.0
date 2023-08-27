@@ -58,4 +58,10 @@ document.addEventListener("DOMContentLoaded", function() {
       
       window.location.href = "login.html";
   });
+  
 });  
+const logoutButton = document.getElementById("logoutButton");
+logoutButton.textContent = localStorage.getItem("usuario");
+;
+
+
