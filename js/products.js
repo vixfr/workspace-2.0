@@ -1,5 +1,5 @@
 const iDLocalStorage = localStorage.getItem("catID");
-const datosProductos = "https://japceibal.github.io/emercado-api/cats_products/"+ iDLocalStorage +".json";
+const datosProductos = "https://japceibal.github.io/emercado-api/cats_products/" + iDLocalStorage + ".json";
 
 document.addEventListener('DOMContentLoaded', () => {
     fetch(datosProductos)
@@ -18,9 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.appendChild(avisoH2);
             } else {
                 for (producto of data.products) {
-                    
+
                     mostrarProducto(producto.image, producto.name, producto.cost, producto.description, producto.soldCount, producto.currency);
-                    
+
                 }
             }
         });
@@ -60,12 +60,96 @@ function mostrarProducto(urlImagen, nombre, precio, descripcion, cantVendidos, s
 };
 
 
-document.addEventListener("DOMContentLoaded",()=>{
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
     const contenedor = document.getElementById("pb-5-container");
     const menorPrecio = document.getElementById("menorPrecio");
     const mayorPrecio = document.getElementById("mayorPrecio");
     const cantVendidos = document.getElementById("cantVendidos");
 
+    mayorPrecio.addEventListener("click", () => {
+        while (contenedor.firstChild) {
+            contenedor.removeChild(contenedor.firstChild);
+        }
 
+        fetch(datosProductos)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error en la solicitud: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.products.length === 0) {
+                    const container = document.getElementById('pb-5-container');
+                    const avisoH2 = document.createElement('h2');
+                    avisoH2.id = "avisoNoProductos"
+                    avisoH2.textContent = "No hay productos para mostrar";
+                    container.appendChild(avisoH2);
+                } else {
+                    for (producto of data.products.sort((a, b) => b.cost - a.cost)) {
+
+                        mostrarProducto(producto.image, producto.name, producto.cost, producto.description, producto.soldCount, producto.currency);
+
+                    }
+                }
+            });
+    })
+    menorPrecio.addEventListener("click", () => {
+        while (contenedor.firstChild) {
+            contenedor.removeChild(contenedor.firstChild);
+        }
+
+
+        fetch(datosProductos)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error en la solicitud: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.products.length === 0) {
+                    const container = document.getElementById('pb-5-container');
+                    const avisoH2 = document.createElement('h2');
+                    avisoH2.id = "avisoNoProductos"
+                    avisoH2.textContent = "No hay productos para mostrar";
+                    container.appendChild(avisoH2);
+                } else {
+                    for (producto of data.products.sort((a, b) => a.cost - b.cost)) {
+                        mostrarProducto(producto.image, producto.name, producto.cost, producto.description, producto.soldCount, producto.currency);
+                    }
+                }
+            });
+    })
+    cantVendidos.addEventListener("click", () => {
+        while (contenedor.firstChild) {
+            contenedor.removeChild(contenedor.firstChild);
+        }
+
+
+        fetch(datosProductos)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error en la solicitud: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.products.length === 0) {
+                    const container = document.getElementById('pb-5-container');
+                    const avisoH2 = document.createElement('h2');
+                    avisoH2.id = "avisoNoProductos"
+                    avisoH2.textContent = "No hay productos para mostrar";
+                    container.appendChild(avisoH2);
+                } else {
+                    for (producto of data.products.sort((a, b) => b.soldCount - a.soldCount)) {
+                        mostrarProducto(producto.image, producto.name, producto.cost, producto.description, producto.soldCount, producto.currency);
+                    }
+                }
+            });
+    })
 
 })
