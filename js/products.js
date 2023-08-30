@@ -1,10 +1,14 @@
-const IdLocalStorage = localStorage.getItem("catID");
-const datosAutos = "https://japceibal.github.io/emercado-api/cats_products/" + IdLocalStorage + ".json";
+const iDLocalStorage = localStorage.getItem("catID");
+const datosProductos = "https://japceibal.github.io/emercado-api/cats_products/"+ iDLocalStorage +".json";
 
 document.addEventListener('DOMContentLoaded', () => {
+<<<<<<< HEAD
     const IdProductosUsd = ['101']
     
     fetch(datosAutos)
+=======
+    fetch(datosProductos)
+>>>>>>> 33dd5084716090884b885d2dd585013065b08472
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error en la solicitud: ${response.status}`);
@@ -20,11 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 container.appendChild(avisoH2);
             } else {
                 for (producto of data.products) {
-                    if (IdProductosUsd.includes(IdLocalStorage)) {
-                        mostrarProducto(producto.image, producto.name, producto.cost, producto.description, producto.soldCount, "USD");
-                    } else {
-                        mostrarProducto(producto.image, producto.name, producto.cost, producto.description, producto.soldCount, "$");
-                    }
+                    
+                    mostrarProducto(producto.image, producto.name, producto.cost, producto.description, producto.soldCount, producto.currency);
+                    
                 }
             }
         });
@@ -62,3 +64,14 @@ function mostrarProducto(urlImagen, nombre, precio, descripcion, cantVendidos, s
 
     container.appendChild(divProducto);
 };
+
+
+document.addEventListener("DOMContentLoaded",()=>{
+    const contenedor = document.getElementById("pb-5-container");
+    const menorPrecio = document.getElementById("menorPrecio");
+    const mayorPrecio = document.getElementById("mayorPrecio");
+    const cantVendidos = document.getElementById("cantVendidos");
+
+
+
+})
