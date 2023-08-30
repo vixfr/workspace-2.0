@@ -2,13 +2,8 @@ const iDLocalStorage = localStorage.getItem("catID");
 const datosProductos = "https://japceibal.github.io/emercado-api/cats_products/" + iDLocalStorage + ".json";
 
 document.addEventListener('DOMContentLoaded', () => {
-<<<<<<< HEAD
-    const IdProductosUsd = ['101']
-    
-    fetch(datosAutos)
-=======
     fetch(datosProductos)
->>>>>>> 33dd5084716090884b885d2dd585013065b08472
+
         .then(response => {
             if (!response.ok) {
                 throw new Error(`Error en la solicitud: ${response.status}`);
