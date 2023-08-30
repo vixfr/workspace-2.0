@@ -3,6 +3,7 @@ const datosAutos = "https://japceibal.github.io/emercado-api/cats_products/" + I
 
 document.addEventListener('DOMContentLoaded', () => {
     const IdProductosUsd = ['101']
+    
     fetch(datosAutos)
         .then(response => {
             if (!response.ok) {
