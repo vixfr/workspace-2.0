@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
           })
           .then(data => {
             if (data.products.length === 0) {
-                const container = document.getElementById('pb-5-container');
+                const container = document.getElementById('contenedor');
                 const avisoH2 = document.createElement('h2');
                 avisoH2.id = "avisoNoProductos"
                 avisoH2.textContent = "No hay productos para mostrar";
