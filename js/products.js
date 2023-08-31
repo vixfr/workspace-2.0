@@ -69,6 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const menorPrecio = document.getElementById("menorPrecio");
     const mayorPrecio = document.getElementById("mayorPrecio");
     const cantVendidos = document.getElementById("cantVendidos");
+    const rangeFilterBtn = document.getElementById("rangeFilterCount");
+  const clearRangeFilterBtn = document.getElementById("clearRangeFilter");
+
 
     mayorPrecio.addEventListener("click", () => {
         while (contenedor.firstChild) {
@@ -153,4 +156,45 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     })
 
-})
+    rangeFilterBtn.addEventListener("click", () => {
+        while (contenedor.firstChild) {
+          contenedor.removeChild(contenedor.firstChild);
+        }
+    
+        const minPrice = parseFloat(document.getElementById("rangeFilterCountMin").value);
+        const maxPrice = parseFloat(document.getElementById("rangeFilterCountMax").value);
+    
+        fetch(datosProductos)
+          .then(response => {
+            if (!response.ok) {
+              throw new Error(`Error en la solicitud: ${response.status}`);
+            }
+            return response.json();
+          })
+          .then(data => {
+            if (data.products.length === 0) {
+                const container = document.getElementById('pb-5-container');
+                const avisoH2 = document.createElement('h2');
+                avisoH2.id = "avisoNoProductos"
+                avisoH2.textContent = "No hay productos para mostrar";
+                container.appendChild(avisoH2);
+            } else {
+                const filteredAndSortedProducts = data.products.filter(product => {
+                    const productPrice = parseFloat(product.cost);
+                    return productPrice >= minPrice && productPrice <= maxPrice;
+                }).sort((a, b) => a.cost - b.cost);
+                for (const producto of filteredAndSortedProducts) {
+                    mostrarProducto(producto.image, producto.name, producto.cost, producto.description, producto.soldCount, producto.currency);
+                  }
+                }
+              });
+          });
+        
+          clearRangeFilterBtn.addEventListener("click", () => {
+            document.getElementById("rangeFilterCountMin").value = "";
+            document.getElementById("rangeFilterCountMax").value = "";
+
+           
+                
+});
+});
