@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .then(data => {
             if (data.products.length === 0) {
-                const container = document.getElementById('pb-5-container');
+                const container = document.getElementById('contenedor');
                 const avisoH2 = document.createElement('h2');
                 avisoH2.id = "avisoNoProductos"
                 avisoH2.textContent = "No hay productos para mostrar";
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 });
 function mostrarProducto(urlImagen, nombre, precio, descripcion, cantVendidos, simboloMoneda) {
-    const container = document.getElementById("pb-5-container");
+    const container = document.getElementById("contenedor");
 
     const divProducto = document.createElement('div');
     divProducto.classList.add("contProducto");
@@ -65,7 +65,7 @@ function mostrarProducto(urlImagen, nombre, precio, descripcion, cantVendidos, s
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const contenedor = document.getElementById("pb-5-container");
+    const contenedor = document.getElementById("contenedor");
     const menorPrecio = document.getElementById("menorPrecio");
     const mayorPrecio = document.getElementById("mayorPrecio");
     const cantVendidos = document.getElementById("cantVendidos");
@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(data => {
                 if (data.products.length === 0) {
-                    const container = document.getElementById('pb-5-container');
+                    const container = document.getElementById('contenedor');
                     const avisoH2 = document.createElement('h2');
                     avisoH2.id = "avisoNoProductos"
                     avisoH2.textContent = "No hay productos para mostrar";
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(data => {
                 if (data.products.length === 0) {
-                    const container = document.getElementById('pb-5-container');
+                    const container = document.getElementById('contenedor');
                     const avisoH2 = document.createElement('h2');
                     avisoH2.id = "avisoNoProductos"
                     avisoH2.textContent = "No hay productos para mostrar";
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
             })
             .then(data => {
                 if (data.products.length === 0) {
-                    const container = document.getElementById('pb-5-container');
+                    const container = document.getElementById('contenedor');
                     const avisoH2 = document.createElement('h2');
                     avisoH2.id = "avisoNoProductos"
                     avisoH2.textContent = "No hay productos para mostrar";
