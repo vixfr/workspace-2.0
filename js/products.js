@@ -167,6 +167,7 @@ rangeFilterBtn.addEventListener("click", () => {
             );
           }
         }
+>>>>>>> 56626fe2fd07d6d2e439a3fd07917beea06859aa
       });
   });
   menorPrecio.addEventListener("click", () => {
