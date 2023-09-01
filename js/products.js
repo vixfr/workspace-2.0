@@ -73,20 +73,30 @@ function mostrarProducto(
   container.appendChild(divProducto);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const contenedor = document.getElementById("contenedor");
-  const menorPrecio = document.getElementById("menorPrecio");
-  const mayorPrecio = document.getElementById("mayorPrecio");
-  const cantVendidos = document.getElementById("cantVendidos");
-  const rangeFilterBtn = document.getElementById("rangeFilterCount");
-  const clearRangeFilterBtn = document.getElementById("clearRangeFilter");
+const contenedor = document.getElementById("contenedor");
+const menorPrecio = document.getElementById("menorPrecio");
+const mayorPrecio = document.getElementById("mayorPrecio");
+const cantVendidos = document.getElementById("cantVendidos");
+const rangeFilterBtn = document.getElementById("rangeFilterCount");
+const clearRangeFilterBtn = document.getElementById("clearRangeFilter");
+const rangeFilterCountMin = document.getElementById("rangeFilterCountMin");
+const rangeFilterCountMax = document.getElementById("rangeFilterCountMax");
 
-  mayorPrecio.addEventListener("click", () => {
-    while (contenedor.firstChild) {
-      contenedor.removeChild(contenedor.firstChild);
+let dataProductos = null;
+
+// Realizar la solicitud fetch una sola vez al cargar la página
+fetch(datosProductos)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`Error en la solicitud: ${response.status}`);
     }
+    return response.json();
+  })
+  .then((data) => {
+    dataProductos = data;
+    mostrarProductos(dataProductos.products);
+  });
 
-<<<<<<< HEAD
 // Función para mostrar los productos en el contenedor
 function mostrarProductos(productos) {
   contenedor.innerHTML = "";
@@ -140,154 +150,16 @@ rangeFilterBtn.addEventListener("click", () => {
       const filteredData = dataProductos.products.filter((producto) => {
         const productPrice = parseFloat(producto.cost);
         return productPrice >= minPrice && productPrice <= maxPrice;
-=======
-    fetch(datosProductos)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error en la solicitud: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data.products.length === 0) {
-          const container = document.getElementById("contenedor");
-          const avisoH2 = document.createElement("h2");
-          avisoH2.id = "avisoNoProductos";
-          avisoH2.textContent = "No hay productos para mostrar";
-          container.appendChild(avisoH2);
-        } else {
-          for (producto of data.products.sort((a, b) => b.cost - a.cost)) {
-            mostrarProducto(
-              producto.image,
-              producto.name,
-              producto.cost,
-              producto.description,
-              producto.soldCount,
-              producto.currency
-            );
-          }
-        }
->>>>>>> 56626fe2fd07d6d2e439a3fd07917beea06859aa
       });
-  });
-  menorPrecio.addEventListener("click", () => {
-    while (contenedor.firstChild) {
-      contenedor.removeChild(contenedor.firstChild);
+      mostrarProductos(filteredData);
     }
-
-    fetch(datosProductos)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error en la solicitud: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data.products.length === 0) {
-          const container = document.getElementById("contenedor");
-          const avisoH2 = document.createElement("h2");
-          avisoH2.id = "avisoNoProductos";
-          avisoH2.textContent = "No hay productos para mostrar";
-          container.appendChild(avisoH2);
-        } else {
-          for (producto of data.products.sort((a, b) => a.cost - b.cost)) {
-            mostrarProducto(
-              producto.image,
-              producto.name,
-              producto.cost,
-              producto.description,
-              producto.soldCount,
-              producto.currency
-            );
-          }
-        }
-      });
-  });
-  cantVendidos.addEventListener("click", () => {
-    while (contenedor.firstChild) {
-      contenedor.removeChild(contenedor.firstChild);
-    }
-
-    fetch(datosProductos)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error en la solicitud: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data.products.length === 0) {
-          const container = document.getElementById("contenedor");
-          const avisoH2 = document.createElement("h2");
-          avisoH2.id = "avisoNoProductos";
-          avisoH2.textContent = "No hay productos para mostrar";
-          container.appendChild(avisoH2);
-        } else {
-          for (producto of data.products.sort(
-            (a, b) => b.soldCount - a.soldCount
-          )) {
-            mostrarProducto(
-              producto.image,
-              producto.name,
-              producto.cost,
-              producto.description,
-              producto.soldCount,
-              producto.currency
-            );
-          }
-        }
-      });
-  });
-
-  rangeFilterBtn.addEventListener("click", () => {
-    while (contenedor.firstChild) {
-      contenedor.removeChild(contenedor.firstChild);
-    }
-
-    const minPrice = parseFloat(
-      document.getElementById("rangeFilterCountMin").value
-    );
-    const maxPrice = parseFloat(
-      document.getElementById("rangeFilterCountMax").value
-    );
-
-    fetch(datosProductos)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Error en la solicitud: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data.products.length === 0) {
-          const container = document.getElementById("contenedor");
-          const avisoH2 = document.createElement("h2");
-          avisoH2.id = "avisoNoProductos";
-          avisoH2.textContent = "No hay productos para mostrar";
-          container.appendChild(avisoH2);
-        } else {
-          const filteredAndSortedProducts = data.products
-            .filter((product) => {
-              const productPrice = parseFloat(product.cost);
-              return productPrice >= minPrice && productPrice <= maxPrice;
-            })
-            .sort((a, b) => a.cost - b.cost);
-          for (const producto of filteredAndSortedProducts) {
-            mostrarProducto(
-              producto.image,
-              producto.name,
-              producto.cost,
-              producto.description,
-              producto.soldCount,
-              producto.currency
-            );
-          }
-        }
-      });
-  });
-
-  clearRangeFilterBtn.addEventListener("click", () => {
-    document.getElementById("rangeFilterCountMin").value = "";
-    document.getElementById("rangeFilterCountMax").value = "";
-  });
+  }
 });
+
+// Manejador de eventos para el botón de limpiar filtro por rango de precio
+clearRangeFilterBtn.addEventListener("click", () => {
+  rangeFilterCountMin.value = "";
+  rangeFilterCountMax.value = "";
+  mostrarProductos(dataProductos.products); // Mostrar todos los productos nuevamente
+});
+;
