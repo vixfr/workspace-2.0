@@ -61,7 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         } else {
           const p = document.createElement("p");
-          p.textContent = "No sea han encontrado productos para: " + searchBar.value + ".";
+          p.textContent =
+            "No sea han encontrado productos para: " + searchBar.value + ".";
           p.classList.add("lead");
           p.classList.add("text-center");
           contenedor.appendChild(p);
@@ -78,42 +79,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //  LA QUISE EXPORTAR CON EXPORT {MOSTRARPRODUCTO} PERO SE ROMPIO. PODEMOS INTENTARLO...
 
-function mostrarProducto(
-  urlImagen,
-  nombre,
-  precio,
-  descripcion,
-  cantVendidos,
-  simboloMoneda
-) {
-  const container = document.getElementById("contenedor");
+// function mostrarProducto(
+//   urlImagen,
+//   nombre,
+//   precio,
+//   descripcion,
+//   cantVendidos,
+//   simboloMoneda
+// ) {
+//   const container = document.getElementById("contenedor");
 
-  const divProducto = document.createElement("div");
-  divProducto.classList.add("contProducto");
+//   const divProducto = document.createElement("div");
+//   divProducto.classList.add("contProducto");
 
-  const imagen = document.createElement("img");
-  imagen.src = urlImagen;
-  imagen.classList.add("imgProducto");
-  divProducto.appendChild(imagen);
+//   const imagen = document.createElement("img");
+//   imagen.src = urlImagen;
+//   imagen.classList.add("imgProducto");
+//   divProducto.appendChild(imagen);
 
-  const nombreP = document.createElement("h2");
-  nombreP.textContent = nombre;
-  divProducto.appendChild(nombreP);
-  nombreP.classList.add("nombre");
+//   const nombreP = document.createElement("h2");
+//   nombreP.textContent = nombre;
+//   divProducto.appendChild(nombreP);
+//   nombreP.classList.add("nombre");
 
-  const precioP = document.createElement("p");
-  precioP.textContent = `${simboloMoneda} ${precio}`;
-  precioP.classList.add("precioProducto");
-  divProducto.appendChild(precioP);
+//   const precioP = document.createElement("p");
+//   precioP.textContent = `${simboloMoneda} ${precio}`;
+//   precioP.classList.add("precioProducto");
+//   divProducto.appendChild(precioP);
 
-  const descripcionP = document.createElement("p");
-  descripcionP.textContent = descripcion;
-  descripcionP.id = "descripcion";
-  divProducto.appendChild(descripcionP);
+//   const descripcionP = document.createElement("p");
+//   descripcionP.textContent = descripcion;
+//   descripcionP.id = "descripcion";
+//   divProducto.appendChild(descripcionP);
 
-  const cantVendidosP = document.createElement("p");
-  cantVendidosP.textContent = `Vendidos: ${cantVendidos}`;
-  divProducto.appendChild(cantVendidosP);
+//   const cantVendidosP = document.createElement("p");
+//   cantVendidosP.textContent = `Vendidos: ${cantVendidos}`;
+//   divProducto.appendChild(cantVendidosP);
 
-  container.appendChild(divProducto);
-}
+//   container.appendChild(divProducto);
+// }
