@@ -9,6 +9,7 @@ const urls = [
   "https://japceibal.github.io/emercado-api/cats_products/108.json",
   "https://japceibal.github.io/emercado-api/cats_products/109.json",
 ];
+const filtros = document.getElementById("filtros");
 
 const fetchPromises = urls.map((url) => fetch(url));
 
@@ -18,6 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const contenedor = document.getElementById("contenedor");
 
   searchBar.addEventListener("input", () => {
+    while (filtros.firstChild) {
+      filtros.removeChild(filtros.firstChild);
+    }
     while (contenedor.firstChild) {
       contenedor.removeChild(contenedor.firstChild);
     }

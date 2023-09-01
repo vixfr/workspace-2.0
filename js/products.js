@@ -80,67 +80,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const cantVendidos = document.getElementById("cantVendidos");
   const rangeFilterBtn = document.getElementById("rangeFilterCount");
   const clearRangeFilterBtn = document.getElementById("clearRangeFilter");
+ 
 
   mayorPrecio.addEventListener("click", () => {
     while (contenedor.firstChild) {
       contenedor.removeChild(contenedor.firstChild);
     }
 
-<<<<<<< HEAD
-// Función para mostrar los productos en el contenedor
-function mostrarProductos(productos) {
-  contenedor.innerHTML = "";
-  productos.forEach((producto) => {
-    mostrarProducto(
-      producto.image,
-      producto.name,
-      producto.cost,
-      producto.description,
-      producto.soldCount,
-      producto.currency
-    );
-  });
-}
-
-// Manejadores de eventos para los botones de filtro por precio
-mayorPrecio.addEventListener("click", () => {
-  if (dataProductos) {
-    const sortedData = [...dataProductos.products].sort(
-      (a, b) => b.cost - a.cost
-    );
-    mostrarProductos(sortedData);
-  }
-});
-
-menorPrecio.addEventListener("click", () => {
-  if (dataProductos) {
-    const sortedData = [...dataProductos.products].sort(
-      (a, b) => a.cost - b.cost
-    );
-    mostrarProductos(sortedData);
-  }
-});
-
-cantVendidos.addEventListener("click", () => {
-  if (dataProductos) {
-    const sortedData = [...dataProductos.products].sort(
-      (a, b) => b.soldCount - a.soldCount
-    );
-    mostrarProductos(sortedData);
-  }
-});
-
-// Manejador de eventos para el botón de filtrar por rango de precio
-rangeFilterBtn.addEventListener("click", () => {
-  if (dataProductos) {
-    const minPrice = parseFloat(rangeFilterCountMin.value);
-    const maxPrice = parseFloat(rangeFilterCountMax.value);
-
-    if (!isNaN(minPrice) && !isNaN(maxPrice)) {
-      const filteredData = dataProductos.products.filter((producto) => {
-        const productPrice = parseFloat(producto.cost);
-        return productPrice >= minPrice && productPrice <= maxPrice;
-=======
     fetch(datosProductos)
       .then((response) => {
         if (!response.ok) {
@@ -167,7 +113,6 @@ rangeFilterBtn.addEventListener("click", () => {
             );
           }
         }
->>>>>>> 56626fe2fd07d6d2e439a3fd07917beea06859aa
       });
   });
   menorPrecio.addEventListener("click", () => {
