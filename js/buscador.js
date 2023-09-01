@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
         }
-        if (matches.length > 1) {
+        if (matches.length >= 1) {
           // Aquí tienes los productos que coinciden con la búsqueda
           for (const match of matches) {
             // Agregar lógica para mostrar los resultados en el contenedor
