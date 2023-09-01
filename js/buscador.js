@@ -13,11 +13,11 @@ const urls = [
 const fetchPromises = urls.map((url) => fetch(url));
 
 document.addEventListener("DOMContentLoaded", () => {
-  const buscador = document.getElementById("buscador");
+  //const buscador = document.getElementById("buscador");
   const searchBar = document.getElementById("searchBar");
   const contenedor = document.getElementById("contenedor");
 
-  buscador.addEventListener("click", () => {
+  searchBar.addEventListener("input", () => {
     while (contenedor.firstChild) {
       contenedor.removeChild(contenedor.firstChild);
     }
@@ -46,18 +46,28 @@ document.addEventListener("DOMContentLoaded", () => {
             }
           }
         }
-
-        // Aquí tienes los productos que coinciden con la búsqueda
-        for (const match of matches) {
-          // Agregar lógica para mostrar los resultados en el contenedor
-          mostrarProducto(
-            match.image,
-            match.name,
-            match.cost,
-            match.description,
-            match.soldCount,
-            match.currency
-          );
+        if (matches.length > 1) {
+          // Aquí tienes los productos que coinciden con la búsqueda
+          for (const match of matches) {
+            // Agregar lógica para mostrar los resultados en el contenedor
+            mostrarProducto(
+              match.image,
+              match.name,
+              match.cost,
+              match.description,
+              match.soldCount,
+              match.currency
+            );
+          }
+        } else {
+          const p = document.createElement("p");
+          p.textContent = "No sea han encontrado productos para: " + searchBar.value + ".";
+          p.classList.add("lead");
+          p.classList.add("text-center");
+          contenedor.appendChild(p);
+        }
+        if (searchBar.value === "") {
+          location.reload();
         }
       })
       .catch((error) => {
