@@ -19,8 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const contenedor = document.getElementById("contenedor");
 
   searchBar.addEventListener("input", () => {
-    while (filtros.firstChild) {
-      filtros.removeChild(filtros.firstChild);
+    if (filtros) {
+      while (filtros.firstChild) {
+        filtros.removeChild(filtros.firstChild);
+      }
     }
     while (contenedor.firstChild) {
       contenedor.removeChild(contenedor.firstChild);
