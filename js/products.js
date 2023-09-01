@@ -131,6 +131,15 @@ menorPrecio.addEventListener("click", () => {
   }
 });
 
+cantVendidos.addEventListener("click", () => {
+  if (dataProductos) {
+    const sortedData = [...dataProductos.products].sort(
+      (a, b) => b.soldCount - a.soldCount
+    );
+    mostrarProductos(sortedData);
+  }
+});
+
 // Manejador de eventos para el botón de filtrar por rango de precio
 rangeFilterBtn.addEventListener("click", () => {
   if (dataProductos) {
