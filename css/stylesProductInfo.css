@@ -1,0 +1,83 @@
+#contenedor{
+    background: linear-gradient( 90deg, rgb(199, 197, 197),rgb(255, 255, 255));
+}
+/* estilos descripción*/
+.contDescripcion{
+    margin-left: 80px;
+    font-size: 1.4rem;
+}
+.contDescripcion p{
+    margin-bottom: 3px;
+}
+.contDescripcion h2{
+    color: rgb(10, 91, 89);
+    font-size: 3rem;
+}
+.contDescripcion p:last-of-type{
+    margin-bottom: 20px;
+
+}
+.contDescripcion span{
+    color: rgb(10, 91, 89);
+    font-weight: 600;
+}
+
+/*estilos imagenes relacionadas y productos relacionados*/
+
+.imagenesRelacionadas, .productosRelacionados{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 40px;
+    column-gap: 15px;
+}
+.imagenesRelacionadas img{
+    height: 350px;
+    border-radius: 20px 0 20px 0;
+}
+.productosRelacionados img{
+    height: 250px;
+    border-radius: 20px;
+}
+.productosRelacionados h3{
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+    font-size: 2rem;
+    color: rgb(10, 91, 89);
+}
+.productosRelacionados p {
+   color: rgb(10, 91, 89);
+   font-weight: 600;
+}
+/* estilos comentarios*/
+ #divcomentarios{
+    margin-left: 50px;
+ }
+ .contcomentarios{
+    margin-bottom: 10px;
+    background-color: cadetblue;
+    padding: 5px 30px;
+    background-color: rgba(255, 255, 255, 0.498);
+ }
+ .contcomentarios p{
+    margin-bottom: 5px;
+ }
+ /* form comentarios*/
+ #formulariocomentarios{
+    margin-left: 50px;
+ }
+ #formulariocomentarios h2{
+    color: rgb(10, 91, 89) ;
+ }
+ #divLabel{
+    display: flex;
+    flex-direction: column;
+ }
+ #divLabel textarea{
+    width: 50%;
+    overflow-y: scroll;
+    resize: none;
+ }
+ 

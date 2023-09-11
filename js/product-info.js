@@ -42,40 +42,45 @@ document.addEventListener("DOMContentLoaded", () => {
 // Función para mostrar la información del producto en la página
 function mostrarProducto2(productoData) {
   const contenedor = document.getElementById("divContenedor");
+  const divContenedorDesc = document.createElement("div");
+  const divContenedorImg = document.createElement("div");
 
   const divContenedor = document.createElement("div");
-  divContenedor.className = "contdescripcion";
+  divContenedorDesc.className = "contDescripcion";
 
   // Crear un elemento para mostrar el nombre
   const nombreProducto = document.createElement("h2");
   nombreProducto.textContent = productoData.name;
-  divContenedor.appendChild(nombreProducto);
+  divContenedorDesc.appendChild(nombreProducto);
 
   // Crear un elemento para mostrar la descripción
   const descripcionProducto = document.createElement("p");
 
   descripcionProducto.textContent = productoData.description;
-  divContenedor.appendChild(descripcionProducto);
+  divContenedorDesc.appendChild(descripcionProducto);
 
   // Crear un elemento para mostrar el costo y la moneda
   const precioProducto = document.createElement("p");
-  precioProducto.textContent = `Precio: ${productoData.currency} ${productoData.cost}`;
-  divContenedor.appendChild(precioProducto);
+  precioProducto.innerHTML = `<span>Precio:</span> ${productoData.currency} ${productoData.cost}`;
+  divContenedorDesc.appendChild(precioProducto);
 
   // Crear un elemento para mostrar la cantidad vendida
   const vendidosProducto = document.createElement("p");
-  vendidosProducto.textContent = `Vendidos: ${productoData.soldCount}`;
-  divContenedor.appendChild(vendidosProducto);
+  vendidosProducto.innerHTML = `<span>Vendidos:</span> ${productoData.soldCount}`;
+  divContenedorDesc.appendChild(vendidosProducto);
 
   // Crear un elemento para mostrar la categoría
   const categoriaProducto = document.createElement("p");
-  categoriaProducto.textContent = `Categoría: ${productoData.category}`;
-  divContenedor.appendChild(categoriaProducto);
+  categoriaProducto.innerHTML = `<span>Categoría:</span> ${productoData.category}`;
+  divContenedorDesc.appendChild(categoriaProducto);
+
+  contenedor.appendChild(divContenedorDesc);
 
   // Crear elementos para mostrar las imágenes relacionadas
   if (productoData.images && productoData.images.length > 0) {
     const imagenesRelacionadas = document.createElement("div");
     imagenesRelacionadas.className = "imagenesRelacionadas";
+  
 
     productoData.images.forEach((imagenSrc, index) => {
       const img = document.createElement("img");
