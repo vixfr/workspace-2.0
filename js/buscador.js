@@ -14,7 +14,6 @@ const filtros = document.getElementById("filtros");
 const fetchPromises = urls.map((url) => fetch(url));
 
 document.addEventListener("DOMContentLoaded", () => {
-  //const buscador = document.getElementById("buscador");
   const searchBar = document.getElementById("searchBar");
   const contenedor = document.getElementById("contenedor");
 
@@ -35,39 +34,34 @@ document.addEventListener("DOMContentLoaded", () => {
         );
       })
       .then((dataArray) => {
-        //array que contiene los objetos extraidos de las apis [{autos},{juguetes}, {muebles}, etc]
-        const searchTerm = searchBar.value.toLowerCase(); // Convertir el valor a minúsculas
+        const searchTerm = searchBar.value.toLowerCase();
         const matches = [];
 
         for (const data of dataArray) {
-          //por cada objeto dentro de ese array
           for (const product of data.products) {
-            //accede al arreglo data.products, e itera cada elemento del arreglo (cada producto)
             const name = product.name.toLowerCase();
             const description = product.description.toLowerCase();
 
-            // Buscar similitudes en el nombre o la descripción
             if (name.includes(searchTerm) || description.includes(searchTerm)) {
               matches.push(product);
             }
           }
         }
         if (matches.length >= 1) {
-          // Aquí tienes los productos que coinciden con la búsqueda
           for (const match of matches) {
-            // Agregar lógica para mostrar los resultados en el contenedor
             mostrarProducto(
               match.image,
               match.name,
               match.cost,
               match.description,
               match.soldCount,
-              match.currency
+              match.currency,
+              match.id // Pasar el ID del producto
             );
           }
         } else {
           const p = document.createElement("p");
-          p.textContent = "No sea han encontrado productos para: " + searchBar.value + ".";
+          p.textContent = "No se han encontrado productos para: " + searchBar.value + ".";
           p.classList.add("lead");
           p.classList.add("text-center");
           contenedor.appendChild(p);
@@ -82,20 +76,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-//  LA QUISE EXPORTAR CON EXPORT {MOSTRARPRODUCTO} PERO SE ROMPIO. PODEMOS INTENTARLO...
-
 function mostrarProducto(
   urlImagen,
   nombre,
   precio,
   descripcion,
   cantVendidos,
-  simboloMoneda
+  simboloMoneda,
+  productId
 ) {
   const container = document.getElementById("contenedor");
 
   const divProducto = document.createElement("div");
   divProducto.classList.add("contProducto");
+
+  // Agregar evento de clic para redirigir al usuario a la página de detalles
+  divProducto.addEventListener("click", () => {
+    setProductID(productId);
+  });
 
   const imagen = document.createElement("img");
   imagen.src = urlImagen;
@@ -122,4 +120,9 @@ function mostrarProducto(
   divProducto.appendChild(cantVendidosP);
 
   container.appendChild(divProducto);
+}
+
+function setProductID(productId) {
+  localStorage.setItem("productID", productId);
+  window.location = "product-info.html"; 
 }
