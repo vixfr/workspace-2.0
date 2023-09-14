@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
     .catch((error) => {
       console.error(error);
     });
+  //muestraEstrellas();
+  muestraEstrellas()
 });
 
 
@@ -80,7 +82,7 @@ function mostrarProducto2(productoData) {
   if (productoData.images && productoData.images.length > 0) {
     const imagenesRelacionadas = document.createElement("div");
     imagenesRelacionadas.className = "imagenesRelacionadas";
-  
+
 
     productoData.images.forEach((imagenSrc, index) => {
       const img = document.createElement("img");
@@ -157,6 +159,91 @@ function mostrarcomentarios(infodata) {
   });
 
 
+}
+
+function muestraEstrellas() {
+  // Obtenemos todos los span con clase seleccionar
+  const estrellasSeleccionables = document.querySelectorAll(".seleccionar");
+  let Estrella1Marcada = false;
+  //Para cada estrella, obtenemos su id (entr 1 y 5) y les creamos 3 eventos 
+  estrellasSeleccionables.forEach(estSelecc => {
+
+    if (parseInt(estSelecc.id) === 1) {
+      estSelecc.addEventListener("click", () => {
+        if (Estrella1Marcada) {
+          estrellasSeleccionables.forEach(otrasEstrellas => {
+            otrasEstrellas.classList.remove("x", "checked");
+          })
+          Estrella1Marcada=!Estrella1Marcada
+        } else {
+          Estrella1Marcada = true;
+          estSelecc.classList.add("x", "checked");
+        }
+      });
+      estSelecc.addEventListener("mouseenter", () => {
+        estSelecc.classList.add("checked");
+        estrellasSeleccionables.forEach(otrasEstrellas => {
+          // Para cada estrella, si el id de cualquier estrella es menor o igual al de la estrella que está en hover, a todas esas estrellas se les agrega la clase checked, que ilumina la estrella.
+          if (parseInt(otrasEstrellas.id) <= parseInt(estSelecc.id)) {
+            otrasEstrellas.classList.add('checked');
+          }
+          else {
+            otrasEstrellas.classList.remove("checked");
+          }
+        })
+      })
+      estSelecc.addEventListener('mouseleave', () => {
+        if (!Estrella1Marcada) {
+          
+          estSelecc.classList.remove("checked");
+        }
+        estrellasSeleccionables.forEach(otrasEstrellas => {
+          // Para cada estrella, si cualquiera contiene la clase "x", entonces se le agrega la clase checked, sino se le quita.
+          if (otrasEstrellas.classList.contains('x')) {
+            otrasEstrellas.classList.add('checked');
+          } else {
+            otrasEstrellas.classList.remove("checked")
+          }
+        })
+      })
+    } else {// Si el id es mayor a 1...
+      // Cuando se pasa el cursor por encima de alguna estrella...
+      estSelecc.addEventListener('mouseenter', () => {
+        
+        estrellasSeleccionables.forEach(otrasEstrellas => {
+          // Para cada estrella, si el id de cualquier estrella es menor o igual al de la estrella que está en hover, a todas esas estrellas se les agrega la clase checked, que ilumina la estrella.
+          if (parseInt(otrasEstrellas.id) <= parseInt(estSelecc.id)) {
+            otrasEstrellas.classList.add('checked');
+          }
+          else {
+            otrasEstrellas.classList.remove("checked");
+          }
+        })
+      })
+      // Cuando el cursor sale del área de cualquier estrella...
+      estSelecc.addEventListener('mouseleave', () => {
+        estrellasSeleccionables.forEach(otrasEstrellas => {
+          // Para cada estrella, si cualquiera contiene la clase "x", entonces se le agrega la clase checked, sino se le quita.
+          if (otrasEstrellas.classList.contains('x')) {
+            otrasEstrellas.classList.add('checked');
+          } else {
+            otrasEstrellas.classList.remove("checked")
+          }
+        })
+      })
+      // Cuando se hace clic...
+      estSelecc.addEventListener("click", () => {
+        estrellasSeleccionables.forEach(otrasEstrellas => {
+          // Para cada estrella, si el id de cualquier otra estrella es menor o igual al de la estrella clickeada, se marca con la clase "x", la cual se utilizará para saber cuales estrellas dejar marcadas cuando el cursor salga de las estrellas y cuantas marcó el usuario.
+          if (parseInt(otrasEstrellas.id) <= parseInt(estSelecc.id)) {
+            otrasEstrellas.classList.add("x");
+          } else {
+            otrasEstrellas.classList.remove("x");
+          }
+        })
+      })
+    }
+  })
 }
 
 

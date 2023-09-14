@@ -58,19 +58,24 @@
   <main>
     <div id="contenedor">
       <div class="divContenedor" id="divContenedor"></div>
-    
+
       <div id="divcomentarios"></div>
 
       <div id="formulariocomentarios">
         <h2>Comentar</h2>
         <form>
           <div id="divLabel">
-            <label for="opinion">Tu Opinión:</label>
             <textarea id="opinion" name="opinion" rows="4" cols="50"></textarea>
           </div>
           <div>
-            <label for="puntuacion">Tu Puntuación:</label>
-            <input type="number" id="puntuacion" name="puntuacion" min="0" max="5" step="1">
+            <label for="estrellas">Tu Puntuación:</label>
+            <div id="estrellas">
+              <span id="1" class="seleccionar fa fa-star"></span>
+              <span id="2" class="seleccionar fa fa-star"></span>
+              <span id="3" class="seleccionar fa fa-star"></span>
+              <span id="4" class="seleccionar fa fa-star"></span>
+              <span id="5" class="seleccionar fa fa-star"></span>
+            </div>
           </div>
           <div>
             <input type="submit" value="Enviar" id="comentarioform">
