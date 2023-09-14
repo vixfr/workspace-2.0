@@ -4,6 +4,7 @@
   background: linear-gradient( 90deg, rgb(160, 158, 158),rgb(255, 255, 255));
   margin: 10px;
   height: 20vw;
+  cursor: pointer;
 }
 .imgProducto {
   height: 20vw;
