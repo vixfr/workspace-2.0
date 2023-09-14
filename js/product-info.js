@@ -37,6 +37,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   //muestraEstrellas();
   muestraEstrellas()
+
+  const boton = document.getElementById("btnEnvio");
+  boton.addEventListener("click", (e) => {
+    e.preventDefault();
+    subirComentario()
+
+  })
 });
 
 
@@ -245,7 +252,31 @@ function muestraEstrellas() {
     }
   })
 }
+function subirComentario() {
+  const divComentarios = document.getElementById("divcomentarios")
+  const comentario = document.getElementById("opinion");
+  
+  const divNuevoComentario = document.createElement("div");
+  divNuevoComentario.classList.add("contcomentarios");
+  const estrellas = document.getElementById("estrellas");
 
+  const valorComentario = comentario.value;
+  const estrellasHtml = estrellas.innerHTML;
+  console.log(valorComentario);
+
+  const fechaHora = new Date();
+  const fecha = fechaHora.toLocaleDateString();
+  const hora = fechaHora.toLocaleTimeString();
+
+  divNuevoComentario.innerHTML = `<h2>${localStorage.getItem("user")}</h2><p>${valorComentario}</p><p>${fecha}, ${hora}</p>${estrellasHtml}`
+  
+  divComentarios.appendChild(divNuevoComentario);
+  comentario.value = "";
+  
+
+
+
+}
 
 
 

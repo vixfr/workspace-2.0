@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const username = document.getElementById("txt-user").value;
         const password = document.getElementById("txt-password").value;
         
-        localStorage.setItem('usuario', username);
+        //localStorage.setItem('usuario', username);
   
         if (username && password) {
             const user = username;

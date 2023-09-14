@@ -80,7 +80,8 @@
     overflow-y: scroll;
     resize: none;
  }
- #formulariocomentarios span{
+ 
+ #formulariocomentarios span,#divcomentarios span .seleccionar{
 display: inline;
 margin-left: -4px;
  }
