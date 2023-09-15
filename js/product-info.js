@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // Construye la URL para obtener el JSON del producto utilizando el ID
+  // Construye la URL para obtener el JSON del producto utilizando el ID 
   const productoURL = `https://japceibal.github.io/emercado-api/products/${productID}.json`;
   //Construye la URL para acceder a los comentarios del porducto seleccionado.
   const ComentariosURL = `https://japceibal.github.io/emercado-api/products_comments/${productID}.json`;
@@ -28,27 +28,26 @@ document.addEventListener("DOMContentLoaded", () => {
     .then(([productoData, comentariosData]) => {
       // Procesa el JSON del producto y muestra la información en la página
       mostrarProducto2(productoData);
-
       // Procesa los comentarios y muéstralos en la página
       mostrarcomentarios(comentariosData);
     })
     .catch((error) => {
       console.error(error);
     });
-  //muestraEstrellas();
+  
   muestraEstrellas()
 
   const boton = document.getElementById("btnEnvio");
   boton.addEventListener("click", (e) => {
     e.preventDefault();
-    subirComentario()
-
+    subirComentario();
   })
 });
 
 
 
 // Función para mostrar la información del producto en la página
+//Adrian
 function mostrarProducto2(productoData) {
   const contenedor = document.getElementById("divContenedor");
   const divContenedorDesc = document.createElement("div");
@@ -133,7 +132,7 @@ function mostrarProducto2(productoData) {
 
   contenedor.appendChild(divContenedor);
 }
-
+//Mariangel
 function mostrarcomentarios(infodata) {
   const container = document.getElementById("divcomentarios");
 
@@ -167,7 +166,7 @@ function mostrarcomentarios(infodata) {
 
 
 }
-
+//Agus
 function muestraEstrellas() {
   // Obtenemos todos los span con clase seleccionar
   const estrellasSeleccionables = document.querySelectorAll(".seleccionar");
@@ -252,7 +251,9 @@ function muestraEstrellas() {
     }
   })
 }
+//Viky
 function subirComentario() {
+  //Obtenemos los valores y elementos del dom.
   const divComentarios = document.getElementById("divcomentarios")
   const comentario = document.getElementById("opinion");
   
@@ -261,21 +262,22 @@ function subirComentario() {
   const estrellas = document.getElementById("estrellas");
 
   const valorComentario = comentario.value;
-  const estrellasHtml = estrellas.innerHTML;
-  console.log(valorComentario);
+  const estrellasHtml = estrellas.innerHTML;//Copiamos el html de las estrellas seleccionadas en ese momento.
 
+  console.log(valorComentario);//prueba
+
+  //Creamos una nueva instancia de Date() para obtener la hora y fecha del ordenador.
   const fechaHora = new Date();
   const fecha = fechaHora.toLocaleDateString();
   const hora = fechaHora.toLocaleTimeString();
 
-  divNuevoComentario.innerHTML = `<h2>${localStorage.getItem("user")}</h2><p>${valorComentario}</p><p>${fecha}, ${hora}</p>${estrellasHtml}`
+  //Agregamos el contenido html al nuevo comentario
+  divNuevoComentario.innerHTML = `<h2>${localStorage.getItem("user")}</h2><p>${valorComentario}</p><p>${fecha}, ${hora}</p><p>${estrellasHtml}</p>`
   
   divComentarios.appendChild(divNuevoComentario);
-  comentario.value = "";
+
+  comentario.value = "";//Vaciamos el textarea.
   
-
-
-
 }
 
 

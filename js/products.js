@@ -1,4 +1,4 @@
-
+//Nadia
 function setProductID(productId) {
   localStorage.setItem("productID", productId);
   window.location = "product-info.html"; 

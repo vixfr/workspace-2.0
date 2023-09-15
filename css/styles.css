@@ -1,10 +1,15 @@
 /*ESTILOS PARA LOS PRODUCTOS*/
 
 .contProducto {
+  
   background: linear-gradient( 90deg, rgb(160, 158, 158),rgb(255, 255, 255));
   margin: 10px;
   height: 20vw;
   cursor: pointer;
+
+}
+.contProducto:hover{
+   background: linear-gradient( 90deg, rgb(31, 31, 31),rgb(255, 255, 255));
 }
 .imgProducto {
   height: 20vw;
