@@ -64,6 +64,15 @@ const logoutButton = document.getElementById("logoutButton");
 logoutButton.textContent = localStorage.getItem("user");
 ;
 
+const miperfil = document.getElementById("usuario");
+miperfil.addEventListener("click",function(){
+  window.location.href="my-profile.html";
+})
+;
 
-
+const carrito =document.getElementById("carrito");
+carrito.addEventListener("click",function(){
+  window.location.href="cart.html";
+})
+;
 
