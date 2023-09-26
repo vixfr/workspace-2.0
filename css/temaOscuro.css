@@ -1,0 +1,83 @@
+/*ESTILOS TEMAS*/
+/*temas index*/
+#divFiltros{
+  padding: 10px 0;
+}
+.temaOscuro .fondoOscuro2 {
+  background: none;
+  background-color: #1d1c1c !important;
+}
+.temaOscuro .fondoOscuro1 {
+  background: none;
+  background-color: rgb(33, 37, 41) !important;
+  border: none;
+}
+.temaOscuro .letra-blanca {
+  color: white !important;
+}
+.temaOscuro .fonOsc2-sombra-y-letra-blanca {
+  box-shadow: 0 0 5px white !important;
+  color: white !important;
+  background-color: #1d1c1c;
+}
+/*temas categories*/
+#cat-list-container{
+  padding: 0 10%;
+}
+.temaOscuro #cat-list-container div{
+   background: none;
+  background-color: #1d1c1c !important;
+   color: white !important;
+}
+/*temas productos*/
+.temaOscuro #avisoNoProductos{
+  color: white;
+}
+.temaOscuro .contProducto{
+  color: white;
+  background: linear-gradient(90deg, #332f2f, rgba(33, 37, 41, 0) );
+}
+.temaOscuro .contProducto:hover{
+   background: linear-gradient(90deg,  #3f2201, rgba(33, 37, 41, 0) );
+}
+.temaOscuro .contProducto .precioProducto{
+  color: #ff5733;
+}
+/*temas productInfo*/
+.temaOscuro .contDescripcion,.temaOscuro #formulariocomentarios label,.temaOscuro #formulariocomentarios textarea{
+color: white;
+}
+.temaOscuro .contDescripcion span, .temaOscuro .contDescripcion h2,.temaOscuro .productosRelacionados p,.temaOscuro .productosRelacionados h3, .temaOscuro .contProducto .nombre,.temaOscuro #formulariocomentarios h2, .temaOscuro .orangeSell{
+  color: orangered !important;
+}
+.temaOscuro #divcomentarios .contcomentarios{
+  color: white;
+  background: linear-gradient(90deg,#30353a, #212529);
+}
+.temaOscuro #formulariocomentarios #estrellas, .temaOscuro #divcomentarios .contcomentarios p:last-of-type{
+  color: black;
+}
+.temaOscuro #formulariocomentarios textarea, .temaOscuro #formulariocomentarios textarea::-webkit-scrollbar{
+  background-color: #30353a;
+}
+.temaOscuro #formulariocomentarios #btnEnvio, .temaOscuro #btnVender{
+  background-color: orangered !important;
+}
+/*temas vender*/
+#marginTopSell{
+  margin-top: 20px;
+}
+.temaOscuro #btnVender{
+  border: none;
+}
+.temaOscuro #seccionVenta input,.temaOscuro #seccionVenta select,.temaOscuro #seccionVenta textarea{
+  background-color: #30353a;
+  border: none;
+  color: white;
+}
+.temaOscuro #file-upload,.temaOscuro #costos li{
+  background-color: #30353a;
+}
+.temaOscuro #seccionVenta #comissionText,.temaOscuro #seccionVenta #totalCostText,.temaOscuro #seccionVenta #productCostText{
+  color: orangered !important;
+}

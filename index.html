@@ -8,8 +8,13 @@
 
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/temaOscuro.css" rel="stylesheet">
+  
+
+
 </head>
 
 <body>
@@ -24,14 +29,15 @@
           <div class="opcionesUsuario ">
             <button class="btn btn-secondary dropdown-toggle nav-link" type="button" id="logoutButton"
               data-bs-toggle="dropdown">
-  
+
             </button>
             <ul class="dropdown-menu" aria-labelledby="logoutButton">
               <li><a id="cerrarSesion" class="dropdown-item nav-link" href="#">Cerrar Sesión</a></li>
+              <li> <a id="opcionTema" class="dropdown-item nav-link">Modo noche <i class="fa-regular fa-moon"></i></a></li>
             </ul>
           </div>
           <li class="nav-item">
-            <input  id='searchBar' type="search" placeholder="Buscar productos...">
+            <input id='searchBar' type="search" placeholder="Buscar productos...">
           </li>
           <li class="nav-item">
             <a class="nav-link " href="index.html">Inicio</a>
@@ -51,11 +57,11 @@
 
   <main>
     <div class="jumbotron text-center"></div>
-    <div class="album py-5 bg-light">
-      <div class="container" id="contenedor">
+    <div class="album py-5 bg-light fondoOscuro1">
+      <div class="container pb-5" id="contenedor">
         <div class="row">
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="autos">
+            <div class="card fonOsc2-sombra-y-letra-blanca mb-4 shadow-sm custom-card cursor-active" id="autos">
               <img class="bd-placeholder-img card-img-top" src="img/cars_index.jpg"
                 alt="Imgagen representativa de la categoría 'Autos'">
               <h3 class="m-3">Autos</h3>
@@ -65,7 +71,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="juguetes">
+            <div class="card fonOsc2-sombra-y-letra-blanca mb-4 shadow-sm custom-card cursor-active" id="juguetes">
               <img class="bd-placeholder-img card-img-top" src="img/toys_index.jpg"
                 alt="Imgagen representativa de la categoría 'Juguetes'">
               <h3 class="m-3">Juguetes</h3>
@@ -75,7 +81,7 @@
             </div>
           </div>
           <div class="col-md-4">
-            <div class="card mb-4 shadow-sm custom-card cursor-active" id="muebles">
+            <div class="card fonOsc2-sombra-y-letra-blanca mb-4 shadow-sm custom-card cursor-active" id="muebles">
               <img class="bd-placeholder-img card-img-top" src="img/furniture_index.jpg"
                 alt="Imgagen representativa de la categoría 'Muebles'">
               <h3 class="m-3">Muebles</h3>
@@ -86,12 +92,12 @@
           </div>
         </div>
         <div class="row">
-          <a class="btn btn-light btn-lg btn-block" href="categories.html">Y mucho más!</a>
+          <a class="btn letra-blanca fondoOscuro1 btn-light btn-lg btn-block" href="categories.html">Y mucho más!</a>
         </div>
       </div>
     </div>
   </main>
-  <footer class="text-muted">
+  <footer class="text-muted fondoOscuro1">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
@@ -100,6 +106,7 @@
       </p>
     </div>
   </footer>
+  <script src="js/temaOscuro.js"></script>
   <script src="js/buscador.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/index.js"></script>

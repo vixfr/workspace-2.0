@@ -1,85 +1,75 @@
+
 /*ESTILOS PARA LOS PRODUCTOS*/
 
 .contProducto {
-  
-  background: linear-gradient( 90deg, rgb(160, 158, 158),rgb(255, 255, 255));
+  background: linear-gradient(90deg, rgb(160, 158, 158), rgb(255, 255, 255));
   margin: 10px;
   height: 20vw;
   cursor: pointer;
-
 }
-.contProducto:hover{
-   background: linear-gradient( 90deg, rgb(31, 31, 31),rgb(255, 255, 255));
+.contProducto:hover {
+  background: linear-gradient(90deg, rgb(31, 31, 31), rgb(255, 255, 255));
 }
 .imgProducto {
   height: 20vw;
   float: left;
   margin-right: 10px;
 }
-.contProducto h2{
+.contProducto h2 {
   font-size: 3vw;
   margin-bottom: 3vw;
-  
+
   color: rgb(10, 91, 89);
   display: inline;
 }
-.contProducto p{
-  font-family: 'Montserrat', sans-serif;
+.contProducto p {
+  font-family: "Montserrat", sans-serif;
   font-size: 1.5vw;
   margin: 1vw 1vw;
   font-weight: 800;
 }
-.precioProducto{
+.precioProducto {
   color: rgb(15, 177, 69);
   text-shadow: 0px 0px 10px rgb(0, 4, 255);
   float: right;
 }
-#descripcion{
+#descripcion {
   margin-top: 2.5vw;
 }
 
-
-
-
 /*ESTILOS PARA LOS NAVS*/
-.opcionesUsuario ul{
+.opcionesUsuario ul {
   background-color: #212529;
   border: none;
   padding: 0;
-  
- 
 }
 
-
-#cerrarSesion{
+#cerrarSesion,
+#opcionTema {
   margin-left: 15px;
- }
-
-#cerrarSesion:hover{
-background-color: #212529;
 }
-#logoutButton{
+
+#cerrarSesion:hover,
+#opcionTema:hover {
+  background-color: #212529;
+}
+#logoutButton {
   background-color: #212529;
   border: none;
   text-align: left;
   padding-left: 0;
 }
-#logoutButton:focus{
- outline: none;
+#logoutButton:focus {
+  outline: none;
 }
 
-nav input{
-width: 25rem;
-height: 80%;
-margin-top: 5px;
-color: none;
-color: black;
+nav input {
+  width: 25rem;
+  height: 80%;
+  margin-top: 5px;
+  color: none;
+  color: black;
 }
-
-
-
-
-
 
 /*ESTILOS POR DEFECTO*/
 .jumbotron,
