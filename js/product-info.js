@@ -50,10 +50,9 @@ document.addEventListener("DOMContentLoaded", () => {
 //Adrian
 function mostrarProducto2(productoData) {
   const contenedor = document.getElementById("divContenedor");
-  const divContenedorDesc = document.createElement("div");
-  const divContenedorImg = document.createElement("div");
+  contenedor.innerHTML = ""; // Limpia el contenedor actual
 
-  const divContenedor = document.createElement("div");
+  const divContenedorDesc = document.createElement("div");
   divContenedorDesc.className = "contDescripcion";
 
   // Crear un elemento para mostrar el nombre
@@ -63,7 +62,6 @@ function mostrarProducto2(productoData) {
 
   // Crear un elemento para mostrar la descripción
   const descripcionProducto = document.createElement("p");
-
   descripcionProducto.textContent = productoData.description;
   divContenedorDesc.appendChild(descripcionProducto);
 
@@ -89,7 +87,6 @@ function mostrarProducto2(productoData) {
     const imagenesRelacionadas = document.createElement("div");
     imagenesRelacionadas.className = "imagenesRelacionadas";
 
-
     productoData.images.forEach((imagenSrc, index) => {
       const img = document.createElement("img");
       img.className = "imagenRelacionada";
@@ -98,7 +95,7 @@ function mostrarProducto2(productoData) {
       imagenesRelacionadas.appendChild(img);
     });
 
-    divContenedor.appendChild(imagenesRelacionadas);
+    divContenedorDesc.appendChild(imagenesRelacionadas);
   }
 
   // Crear un elemento para mostrar los productos relacionados
@@ -124,13 +121,55 @@ function mostrarProducto2(productoData) {
       productoRelacionadoNombre.textContent = productoRelacionado.name;
       productoRelacionadoDiv.appendChild(productoRelacionadoNombre);
 
+      // aca le agregue un manejador de eventos click a el div que contiene los productos relacionados para qwe use setproduct id :)
+
+      productoRelacionadoDiv.addEventListener("click", () => {
+        setProductID(productoRelacionado.id);
+      });
+
       productosRelacionados.appendChild(productoRelacionadoDiv);
     });
 
-    divContenedor.appendChild(productosRelacionados);
+    divContenedorDesc.appendChild(productosRelacionados);
   }
+}
 
-  contenedor.appendChild(divContenedor);
+
+
+//Mariangel
+function mostrarcomentarios(infodata) {
+  const container = document.getElementById("divcomentarios");
+
+  infodata.forEach((comentario) => {
+    const divContenedor = document.createElement("div");
+    divContenedor.className = "contcomentarios";
+
+    const usuario = document.createElement("h2");
+    usuario.textContent = comentario.user;
+    divContenedor.appendChild(usuario);
+
+    const comentarioElement = document.createElement("p");
+    comentarioElement.textContent = comentario.description;
+    divContenedor.appendChild(comentarioElement);
+
+    const fecha = document.createElement("p");
+    fecha.textContent = new Date(comentario.dateTime).toLocaleString();
+    divContenedor.appendChild(fecha);
+
+    const puntuacion = document.createElement("p");
+    // Crear elementos de estrellas en función de la puntuación
+    for (let i = 1; i <= 5; i++) {
+      const star = document.createElement("span");
+      star.className = `fa fa-star${i <= comentario.score ? ' checked' : ''}`;
+      puntuacion.appendChild(star);
+    }
+    divContenedor.appendChild(puntuacion);
+
+    container.appendChild(divContenedor);
+  });
+
+
+
 }
 //Mariangel
 function mostrarcomentarios(infodata) {
