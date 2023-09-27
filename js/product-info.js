@@ -52,6 +52,8 @@ function mostrarProducto2(productoData) {
   const contenedor = document.getElementById("divContenedor");
   contenedor.innerHTML = ""; // Limpia el contenedor actual
 
+  let htmlContentToAppend="";
+
   const divContenedorDesc = document.createElement("div");
   divContenedorDesc.className = "contDescripcion";
 
@@ -87,16 +89,22 @@ function mostrarProducto2(productoData) {
     const imagenesRelacionadas = document.createElement("div");
     imagenesRelacionadas.className = "imagenesRelacionadas";
 
-    productoData.images.forEach((imagenSrc, index) => {
-      const img = document.createElement("img");
-      img.className = "imagenRelacionada";
-      img.src = imagenSrc;
-      img.alt = `Imagen ${index + 1}`;
-      imagenesRelacionadas.appendChild(img);
-    });
-
+    const carrusel=document.getElementById("carr");
+    productoData.images.forEach((imagenSrc) => {
+      
+      htmlContentToAppend += `
+      
+        <div class="carousel-item ">
+          <img src=${imagenSrc} class="d-block w-100" alt="producto">
+        </div>
+  
+      
+        `  });
+        carrusel.innerHTML = htmlContentToAppend;
+        carrusel.firstElementChild.classList.add("active");
     divContenedorDesc.appendChild(imagenesRelacionadas);
   }
+
 
   // Crear un elemento para mostrar los productos relacionados
   if (productoData.relatedProducts && productoData.relatedProducts.length > 0) {

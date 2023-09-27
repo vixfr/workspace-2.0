@@ -115,3 +115,44 @@ main{
 #estrellas{
   margin-left: 5px;
 }
+
+
+.carousel {
+  max-width: 70%; /* Ajusta el ancho máximo del carrusel según tus necesidades */
+  max-height: 1000px; /* Ajusta la altura máxima del carrusel según tus necesidades */
+  margin: 0 auto; /* Centra el carrusel horizontalmente en el contenedor */
+  
+  margin-bottom:5px;
+  padding: 40px;
+}
+
+/* Estilos para achicar las imágenes sin deformarlas */
+.carousel-inner img {
+  
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+/* Estilos para cambiar el color de fondo de los botones */
+.carousel-control-prev,
+.carousel-control-next {
+  background-color: transparent; /* Fondo transparente */
+  border: none;
+  font-size: 2rem; /* Tamaño de fuente para los botones */
+}
+
+/* Estilos para cambiar el color de los iconos de los botones */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  
+  background-color: #0f1010f1; /* Color del icono */
+  color: #fff; /* Color de fuente del icono */
+}
+
+/* Estilos al pasar el mouse sobre los botones */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  color: #eaf1f8; /* Color de fondo al pasar el mouse */
+}
