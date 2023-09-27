@@ -24,24 +24,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav w-100 justify-content-between">
-            <div class="opcionesUsuario ">
-              <button class="btn btn-secondary dropdown-toggle nav-link" type="button" id="logoutButton"
-                data-bs-toggle="dropdown">
-  
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="logoutButton">
-                <li> <a id="usuario" class="dropdown-item nav-link"> Usuario</a> </li>
-                <li> <a id="carrito" class="dropdown-item nav-link"> Carrito</a> </li>
-                <li><a id="cerrarSesion" class="dropdown-item nav-link" href="#">Cerrar Sesión</a></li>
-                <li> <a id="opcionTema" class="dropdown-item nav-link">Modo noche <i class="fa-regular fa-moon"></i></a>
-                </li>
-              </ul>
-            </div>
             <li class="nav-item">
               <input id='searchBar' type="search" placeholder="Buscar productos...">
             </li>
             <li class="nav-item">
-              <a class="nav-link " href="index.html">Inicio</a>
+              <a class="nav-link" href="index.html">Inicio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="categories.html">Categorías</a>
@@ -50,6 +37,19 @@
               <a class="nav-link" href="sell.html">Vender</a>
             </li>
             <li class="nav-item">
+              <div class="opcionesUsuario dropdown">
+                <button class="btn btn-secondary dropdown-toggle nav-link" type="button" id="logoutButton"
+                  data-bs-toggle="dropdown">
+                  <!-- Contenido del botón del menú desplegable -->
+                  Usuario
+                </button>
+                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="logoutButton">
+                  <li><a id="usuario" class="dropdown-item nav-link">Usuario</a></li>
+                  <li><a id="carrito" class="dropdown-item nav-link">Carrito</a></li>
+                  <li><a id="cerrarSesion" class="dropdown-item nav-link" href="#">Cerrar Sesión</a></li>
+                  <li><a id="opcionTema" class="dropdown-item nav-link">Modo noche <i class="fa-regular fa-moon"></i></a></li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
