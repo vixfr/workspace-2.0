@@ -281,6 +281,6 @@ a.custom-card:hover {
   margin-top: 20px;
 }
 
-.productosRelacionados:hover{
+.productosRelacionados img:hover{
   cursor: pointer;
 }
