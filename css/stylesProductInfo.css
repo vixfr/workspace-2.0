@@ -43,6 +43,13 @@ main{
 .productosRelacionados img {
   height: 250px;
   border-radius: 20px;
+  transition: 1s ease;
+
+}
+.productosRelacionados img:hover{
+  height: 270px;
+  transition: 0.5s ease;
+ 
 }
 .productosRelacionados h3 {
   width: 100%;
