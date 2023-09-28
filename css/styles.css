@@ -45,12 +45,16 @@
 }
 
 #cerrarSesion,
-#opcionTema {
+#opcionTema,
+#usuario,
+#carrito{
   margin-left: 15px;
 }
 
 #cerrarSesion:hover,
-#opcionTema:hover {
+#opcionTema:hover,
+#usuario:hover,
+#carrito:hover {
   background-color: #212529;
 }
 #logoutButton {
