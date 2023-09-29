@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
             body.classList.remove("temaOscuro")
             //modificamos el contenido de la opción para que muestre "modo noche" si está en modo día.
             opcionTema.innerHTML = `Modo noche <i class="fa-regular fa-moon"></i>`
-
         } else {
             localStorage.setItem("tema", "oscuro");
             body.classList.add("temaOscuro");

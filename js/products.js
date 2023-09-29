@@ -1,4 +1,4 @@
-//Nadia
+//Ale punto 1
 function setProductID(productId) {
   localStorage.setItem("productID", productId);
   window.location = "product-info.html"; 

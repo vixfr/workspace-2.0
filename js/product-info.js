@@ -47,7 +47,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // Función para mostrar la información del producto en la página
-//Adrian
 function mostrarProducto2(productoData) {
   const contenedor = document.getElementById("divContenedor");
   contenedor.innerHTML = ""; // Limpia el contenedor actual
@@ -89,17 +88,15 @@ function mostrarProducto2(productoData) {
     const imagenesRelacionadas = document.createElement("div");
     imagenesRelacionadas.className = "imagenesRelacionadas";
 
+//mariángel punto 4
     const carrusel=document.getElementById("carr");
     productoData.images.forEach((imagenSrc) => {
       
       htmlContentToAppend += `
-      
         <div class="carousel-item ">
           <img src=${imagenSrc} class="d-block w-100" alt="producto">
-        </div>
-  
-      
-        `  });
+        </div>`
+    });
         carrusel.innerHTML = htmlContentToAppend;
         carrusel.firstElementChild.classList.add("active");
     divContenedorDesc.appendChild(imagenesRelacionadas);
@@ -131,6 +128,7 @@ function mostrarProducto2(productoData) {
 
       // aca le agregue un manejador de eventos click a el div que contiene los productos relacionados para qwe use setproduct id :)
 
+      //Ale punto 1
       productoRelacionadoDiv.addEventListener("click", () => {
         setProductID(productoRelacionado.id);
       });
@@ -298,7 +296,7 @@ function muestraEstrellas() {
     }
   })
 }
-//Viky
+
 function subirComentario() {
   //Obtenemos los valores y elementos del dom.
   const divComentarios = document.getElementById("divcomentarios")
