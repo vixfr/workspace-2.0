@@ -102,7 +102,7 @@ main{
   display: inline;
   margin-left: -4px;
 }
-#btnEnvio{
+#btnEnvio, .botonComprar{
   width: 40%;
   margin: 0 30%;
   margin-bottom: 15px;
@@ -113,7 +113,7 @@ main{
   font-weight: 500;
   transition: 0.5s ease;
 }
-#btnEnvio:hover{
+#btnEnvio, .botonComprar:hover{
   width: 46%;
   margin: 0 27%;
   margin-bottom: 15px;
@@ -161,3 +161,5 @@ main{
 .carousel-control-next:hover {
   color: #eaf1f8; /* Color de fondo al pasar el mouse */
 }
+
+

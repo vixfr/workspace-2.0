@@ -9,6 +9,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/carrito.css" />
 </head>
 
 <body>
@@ -55,10 +56,70 @@
 
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+      
+        <h2 class="alert-heading">Carrito de compras</h2>
+        <table class="table">
+          <thead class="table-dark">
+           <tr>
+              <th scope="col"></th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Costo</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+         <tbody id='tbody' class="table-group-divider">
+       
+          </tbody>
+        </table>    
     </div>
+
+    <hr>
+
+<div>
+<h2>Tipo de envío</h2>
+
+<form>
+
+  <label>
+    <input type="radio" name="envio" value="premium"> Premium: de 2 a 5 dias (15%)
+  </label>
+
+  <label>
+    <input type="radio" name="envio" value="express"> Express: 5 a 8 días (7%)
+  </label>
+ 
+  <label>
+    <input type="radio" name="envio" value="standard"> Standard: de 12 a 15 dias (5%)
+  </label>
+
+
+</form>
+
+</div>
+
+<div>
+<h2>Dirección del envío</h2>
+
+  <form>
+<label>
+  <input type="text" name="calle" >Calle
+</label>
+
+<label>
+  <input type="number" name="numero" >Número
+</label>
+
+<label>
+  <input type="text" name="esquina" >Esquina
+</label>
+
+
+  </form>
+
+</div>
+
+
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -79,6 +140,8 @@
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
+  <script src="js/product-info.js"></script>
+
 </body>
 
 </html>
