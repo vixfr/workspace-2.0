@@ -1,7 +1,7 @@
 //Ale punto 1
 function setProductID(productId) {
   localStorage.setItem("productID", productId);
-  window.location = "product-info.html"; 
+  window.location = "product-info.html";
 }
 
 let originalData; // Variable para almacenar los datos originales
@@ -23,6 +23,7 @@ function mostrarProductos(data) {
           <p class="precioProducto">${producto.currency} ${producto.cost}</p>
           <p id="descripcion">${producto.description}</p>
           <p>Vendidos: ${producto.soldCount}</p>
+
         </div>
       `;
     });
@@ -76,8 +77,12 @@ function filtrarPorMasVendidos() {
 
 // Función para filtrar productos según un rango de precio
 function filtrarPorRangoPrecio() {
-  const minPrice = parseFloat(document.getElementById("rangeFilterCountMin").value);
-  const maxPrice = parseFloat(document.getElementById("rangeFilterCountMax").value);
+  const minPrice = parseFloat(
+    document.getElementById("rangeFilterCountMin").value
+  );
+  const maxPrice = parseFloat(
+    document.getElementById("rangeFilterCountMax").value
+  );
 
   if (!isNaN(minPrice) && !isNaN(maxPrice)) {
     const productosFiltrados = originalData.products.filter((producto) => {
@@ -86,7 +91,10 @@ function filtrarPorRangoPrecio() {
     });
 
     // Actualizar la lista actual de productos solo si hay resultados del filtro
-    currentData.products = productosFiltrados.length > 0 ? productosFiltrados : originalData.products;
+    currentData.products =
+      productosFiltrados.length > 0
+        ? productosFiltrados
+        : originalData.products;
 
     mostrarProductos(currentData);
   }

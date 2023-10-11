@@ -5,6 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Obtén el carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+  let subtotales = []; //Arreglo para suma total a pagar
+  let suma = 0;
   // Función para mostrar los productos en el carrito
   const mostrarCarrito = () => {
     tbody.innerHTML = ""; // Limpia el contenedor actual
@@ -42,13 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
         filaProducto.appendChild(cantidadProducto);
 
         const subTotal = document.createElement("td");
-        subTotal.innerHTML = `<p id="subtotal${index}">subtotal</p>`;
+        subTotal.innerHTML = `<p id="subtotal${index}"></p>`;
         filaProducto.appendChild(subTotal);
 
         const eliminarProducto = document.createElement("td"); // Agregar columna para el botón Eliminar
         const botonEliminar = document.createElement("button");
         botonEliminar.textContent = "Eliminar";
-        botonEliminar.addEventListener("click", () => eliminarProductoDelCarrito(index)); // Agregar evento para eliminar
+        botonEliminar.addEventListener("click", () =>
+          eliminarProductoDelCarrito(index)
+        ); // Agregar evento para eliminar
         eliminarProducto.appendChild(botonEliminar);
         filaProducto.appendChild(eliminarProducto);
 
@@ -60,20 +64,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  let subtotal = 0;
   // Función para actualizar el subtotal cuando se cambia la cantidad
   const actualizarSubtotal = (event) => {
     const index = event.target.id.replace("cantidad", ""); // Obtiene el índice de la fila
     const cantidad = event.target.value;
     const costo = carrito[index].cost;
-    const subtotal = cantidad * costo;
+    subtotal = cantidad * costo;
+    subtotales[index] = subtotal; //Almacena el subtotal en el arreglo creado arriba
     document.getElementById(`subtotal${index}`).textContent = subtotal;
+
+    //suma total de precios
+    suma = subtotales.reduce((total, subtotal) => total + subtotal, 0);
+    //mostrar total a pagar:
+    totalApagar.textContent = suma;
   };
 
   // Función para eliminar un producto del carrito
+
   const eliminarProductoDelCarrito = (index) => {
-    carrito.splice(index, 1); // Elimina el producto del array
-    localStorage.setItem("carrito", JSON.stringify(carrito)); // Actualiza el carrito en el localStorage
-    mostrarCarrito(); // Vuelve a mostrar el carrito actualizado
+    // Resta el costo del producto eliminado de la suma total
+    suma -= subtotales[index];
+
+    // Actualiza el elemento HTML con el nuevo valor de suma
+    totalApagar.textContent = suma;
+
+    // Elimina el producto del array
+    carrito.splice(index, 1);
+
+    // Actualiza el carrito en el localStorage
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+
+    // Vuelve a mostrar el carrito actualizado
+    mostrarCarrito();
   };
 
   // Llama a la función para mostrar el carrito cuando se carga la página
