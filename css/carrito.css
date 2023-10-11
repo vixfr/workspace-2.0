@@ -1,11 +1,12 @@
-#botonComprar{
-    width: 40%;
-    margin: 0 30%;
-    margin-bottom: 15px;
-    background-color:rgb(10, 91, 89);
-    border: none;
-    border-radius: 5px;
-    color:white;
-    font-weight: 500;
-    transition: 0.5s ease;
-  }
+#botonComprar {
+  width: 40%;
+  margin: 0 30%;
+  margin-bottom: 15px;
+  background-color: rgb(10, 91, 89);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: 500;
+  transition: 0.5s ease;
+}
+

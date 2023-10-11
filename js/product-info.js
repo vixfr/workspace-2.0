@@ -51,10 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
   muestraEstrellas();
 
   const boton = document.getElementById("btnEnvio");
-  boton.addEventListener("click", (e) => {
-    e.preventDefault();
-    subirComentario();
-  });
+  if (boton) {
+    boton.addEventListener("click", (e) => {
+      e.preventDefault();
+      subirComentario();
+    });
+ }
 });
 
 // Función para mostrar la información del producto en la página

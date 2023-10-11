@@ -17,9 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
       carrito.forEach((producto, index) => {
         // Crea elementos HTML para mostrar los detalles del producto y agrégalos a tbody
         const filaProducto = document.createElement("tr");
+        filaProducto.classList.add("table")
 
         const imagenProducto = document.createElement("td");
         const imagen = document.createElement("img");
+        imagen.classList.add("col-sm-6","col-md-6")
         imagen.src = producto.images[0];
         imagenProducto.appendChild(imagen);
         filaProducto.appendChild(imagenProducto);
@@ -29,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
         filaProducto.appendChild(nombreProducto);
 
         const costoProducto = document.createElement("td");
-        costoProducto.textContent = producto.cost;
+        costoProducto.textContent = producto.currency + producto.cost;
         filaProducto.appendChild(costoProducto);
 
         const cantidadProducto = document.createElement("td");
