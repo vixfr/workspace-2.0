@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const tbody = document.getElementById("tbody");
   const carritoDiv = document.getElementById("carrito-div");
-
+  const totalApagar = document.getElementById("totalApagar");
   // Obtén el carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+  let subtotales = carrito.map(() => 0); // Inicializar con ceros
 
-  let subtotales = []; //Arreglo para suma total a pagar
   let suma = 0;
   // Función para mostrar los productos en el carrito
   const mostrarCarrito = () => {
@@ -19,11 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
       carrito.forEach((producto, index) => {
         // Crea elementos HTML para mostrar los detalles del producto y agrégalos a tbody
         const filaProducto = document.createElement("tr");
-        filaProducto.classList.add("table")
+        filaProducto.classList.add("table");
 
         const imagenProducto = document.createElement("td");
         const imagen = document.createElement("img");
-        imagen.classList.add("col-sm-6","col-md-6")
+        imagen.classList.add("col-sm-6", "col-md-6");
         imagen.src = producto.images[0];
         imagenProducto.appendChild(imagen);
         filaProducto.appendChild(imagenProducto);
@@ -41,7 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
         cantidadInput.className = "form-control form-control-color";
         cantidadInput.type = "number";
         cantidadInput.id = `cantidad${index}`; // Agrega un ID único para el input
-        cantidadInput.addEventListener("input", actualizarSubtotal); // Agrega un evento input
+        cantidadInput.addEventListener("input", () => {
+          actualizarSubtotal(index);
+        });
+        // Agregar el atributo 'inputmode' para forzar las flechas de incremento y decremento
+        cantidadInput.setAttribute("inputmode", "numeric");
+
         cantidadProducto.appendChild(cantidadInput);
         filaProducto.appendChild(cantidadProducto);
 
@@ -65,25 +70,30 @@ document.addEventListener("DOMContentLoaded", () => {
       carritoDiv.style.display = "none";
     }
   };
+  const actualizarSubtotal = (index) => {
+    const cantidadInput = document.getElementById(`cantidad${index}`);
+    const subtotalElement = document.getElementById(`subtotal${index}`);
 
-  let subtotal = 0;
-  // Función para actualizar el subtotal cuando se cambia la cantidad
-  const actualizarSubtotal = (event) => {
-    const index = event.target.id.replace("cantidad", ""); // Obtiene el índice de la fila
-    const cantidad = event.target.value;
+    const cantidad = parseInt(cantidadInput.value, 10);
     const costo = carrito[index].cost;
-    subtotal = cantidad * costo;
-    subtotales[index] = subtotal; //Almacena el subtotal en el arreglo creado arriba
-    document.getElementById(`subtotal${index}`).textContent = subtotal;
+    const subtotal = cantidad * costo;
 
-    //suma total de precios
-    suma = subtotales.reduce((total, subtotal) => total + subtotal, 0);
-    //mostrar total a pagar:
+    subtotales[index] = subtotal;
+
+    // Actualiza el subtotal en el elemento HTML
+    subtotalElement.textContent = subtotal.toString();
+
+    // Calcula la suma total
+    suma = subtotales.reduce((total, sub) => total + sub, 0);
+
+    // Muestra la suma total
     totalApagar.textContent = suma;
+
+    // Actualiza el carrito en el localStorage
+    localStorage.setItem("carrito", JSON.stringify(carrito));
   };
 
   // Función para eliminar un producto del carrito
-
   const eliminarProductoDelCarrito = (index) => {
     // Resta el costo del producto eliminado de la suma total
     suma -= subtotales[index];
@@ -93,6 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Elimina el producto del array
     carrito.splice(index, 1);
+
+    // Elimina el subtotal correspondiente al producto eliminado
+    subtotales.splice(index, 1);
+
+    // Actualiza los índices de los elementos restantes en subtotales
+    subtotales = subtotales.map((subtotal, i) => {
+      return actualizarSubtotal(i);
+    });
 
     // Actualiza el carrito en el localStorage
     localStorage.setItem("carrito", JSON.stringify(carrito));

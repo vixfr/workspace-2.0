@@ -1,0 +1,46 @@
+/* Ajustar la tabla en dispositivos móviles */
+@media (max-width: 750px) {
+    table.table {
+      width: 97%; /* Hacer que la tabla ocupe todo el ancho disponible */
+    }
+    #carrito-div {
+        width: 99%;
+      }
+
+  main{
+    width: 89%;
+   
+  }
+  body{
+    width: 100%;
+  }
+  .table{
+    font-size: 1em;
+  }
+    table.table tbody {
+      display: block; /* Hacer que los elementos de la tabla se muestren en bloques para facilitar la lectura en dispositivos móviles */
+    }
+  
+    table.table tr {
+      margin-bottom: 1rem; /* Agregar espacio entre las filas */
+      display: flex;
+      flex-direction: column; /* Colocar elementos de fila en una columna */
+    }
+  
+    table.table td {
+      flex: 1; /* Hacer que las celdas ocupen todo el ancho disponible */
+    }
+
+  }
+  
+  
+  /* Estilos generales para computadoras de escritorio */
+  @media (min-width: 768px) {
+
+    main{
+        width: 95%;
+    }
+    #carrito-div {
+      width: 90%; /* Ajusta el ancho para pantallas más grandes si es necesario */
+    }
+  }
