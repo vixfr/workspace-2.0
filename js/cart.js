@@ -101,16 +101,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     else {
       carritoDiv.innerHTML = "<h5 class=`letraBlanca`>Aún no hay productos en el carrito</h5>";
-      formCarrito.style.display = "none"
+formCarrito.style.display="none"
     }
   };
-  const actualizarSubtotal = (index) => {
-    const cantidadInput = document.getElementById(`cantidad${index}`);
-    const subtotalElement = document.getElementById(`subtotal${index}`);
 
-    mostrarCarrito();
-    actualizarSumaTotal();
-  }
+  mostrarCarrito();
+  actualizarSumaTotal();
 });
 function actualizarSumaTotal() {
   const totalEnPantallaUYU = document.getElementById("sumaTotalUYU")
