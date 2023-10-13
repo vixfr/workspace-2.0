@@ -1,5 +1,7 @@
+//Desafíate.2 mariangel
 document.addEventListener("DOMContentLoaded", () => {
   const carritoDiv = document.getElementById("carrito-div");
+  const formEnvio = document.getElementById("formEnvio")
   // Obtén el carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -11,7 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     carritoDiv.innerHTML = ""; // Limpia el contenedor actual
 
     if (carrito.length > 0) {
-      // El carrito tiene elementos, muestra el carrito
+      // El carrito tiene elementos, muestra el formulario
+      formEnvio.style.display = "block";
       carritoDiv.style.display = "block";
 
       // Itera a través del arreglo de IDs de productos en el carrito
@@ -76,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
           mostrarCarrito();
           actualizarSumaTotal();
         });
-
+//Punto 3.1 Agus
         input.addEventListener("change", () => {
           const cantidad = parseInt(input.value, 10);
           const subtotal = cantidad * producto.cost;
@@ -100,12 +103,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     else {
       carritoDiv.innerHTML = "<h5 class=`letraBlanca`>Aún no hay productos en el carrito</h5>";
+      formEnvio.style.display = "none";
     }
   };
 
   mostrarCarrito();
   actualizarSumaTotal();
 });
+//Punto 3.2
 function actualizarSumaTotal() {
   const totalEnPantallaUYU = document.getElementById("sumaTotalUYU")
   const totalEnPantallaUSD = document.getElementById("sumaTotalUSD")

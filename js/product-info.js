@@ -160,15 +160,17 @@ function mostrarProducto2(productoData) {
   }
 }
 
-//FUNCION PARA AGREGAR PRODUCTOS AL CARRITO
+//Desafíate.1 Nadia
+//FUNCION PARA AGREGAR PRODUCTOS AL CARRITO 
 //cada boton comprar tiene el mismo id que los productos.
 //cada vez que clickeo el boton, tengo que buscar en productosData al producto que corresponda con ese id y guardarlo.
 let botonComprar = document.querySelectorAll(".botonComprar");
 let productoscarrito = [];
 let productoAgregado;
 
+
 function agregarCarrito(e) {
-  // Obtén el ID del producto (puedes obtenerlo de alguna manera, dependiendo de tu estructura de datos)
+  
   productoAgregado = productCloned; // Utiliza el producto clonado
 
   // Verifica si el producto ya está en el carrito
@@ -188,22 +190,26 @@ function agregarCarrito(e) {
     alert("Producto agregado al carrito");
     console.log(productoscarrito);
 
-    // Puedes redirigir al usuario a la página del carrito o realizar otras acciones si es necesario
   }
 }
 
+//Mica
 const actualizarBotonAgregar = () => {
+  //Seleccionamos todos los botones con la clase botonComprar
   botonComprar = document.querySelectorAll(".botonComprar");
 
   botonComprar.forEach((boton) => {
+    //Para cada uno, le agregamos un evento click y se ejecuta la función agregarCarrito.
     boton.addEventListener("click", agregarCarrito);
   }
   );
-
 };
 
+
+//Ale
 // Función para cargar los productos del localStorage
 function cargarProductosDelLocalStorage() {
+
   const productosEnLocalStorage = localStorage.getItem("carrito");
   if (productosEnLocalStorage) {
     productoscarrito = JSON.parse(productosEnLocalStorage);

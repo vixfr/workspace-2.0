@@ -64,7 +64,7 @@ const logoutButton = document.getElementById("logoutButton");
 logoutButton.textContent = localStorage.getItem("user");
 ;
 
-//viky punto 2 
+
 const miperfil = document.getElementById("usuario");
 miperfil.addEventListener("click",function(){
   window.location.href="my-profile.html";
