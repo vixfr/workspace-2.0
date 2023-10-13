@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       subirComentario();
     });
-  }
+ }
 });
 
 // Función para mostrar la información del producto en la página
@@ -96,10 +96,8 @@ function mostrarProducto2(productoData) {
 
   //Crear elemento boton comprar
   const botonComprar = document.createElement("button");
-  botonComprar.classList.add("botonComprar", "btn", "btn-success", "noAgregado");
-  botonComprar.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart2" viewBox="0 0 16 16">
-    <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
-  </svg> Agregar al carrito`;
+  botonComprar.classList = "botonComprar";
+  botonComprar.textContent = "Comprar";
   botonComprar.id = productoData.id;
   divContenedorDesc.appendChild(botonComprar);
 
@@ -110,7 +108,7 @@ function mostrarProducto2(productoData) {
     const imagenesRelacionadas = document.createElement("div");
     imagenesRelacionadas.className = "imagenesRelacionadas";
 
-
+    //mariángel punto 4
     const carrusel = document.getElementById("carr");
     productoData.images.forEach((imagenSrc) => {
       htmlContentToAppend += `
@@ -148,7 +146,7 @@ function mostrarProducto2(productoData) {
 
       // aca le agregue un manejador de eventos click a el div que contiene los productos relacionados para qwe use setproduct id :)
 
-
+      //Ale punto 1
       productoRelacionadoDiv.addEventListener("click", () => {
         setProductID(productoRelacionado.id);
       });
@@ -171,35 +169,22 @@ function agregarCarrito(e) {
   // Obtén el ID del producto (puedes obtenerlo de alguna manera, dependiendo de tu estructura de datos)
   productoAgregado = productCloned; // Utiliza el producto clonado
 
-  // Verifica si el producto ya está en el carrito
-  const productoExistente = productoscarrito.find(producto => producto.name === productoAgregado.name);
+  productoscarrito.push(productoAgregado);
 
-  if (productoExistente) {
-    // Si ya existe, muestra una alerta
-    alert("Este producto ya ha sido agregado al carrito");
-  } else {
-    // Si no existe, agrégalo al carrito
-    productoscarrito.push(productoAgregado);
+  // Guarda el carrito en el localStorage
+  localStorage.setItem("carrito", JSON.stringify(productoscarrito));
 
-    // Guarda el carrito en el localStorage
-    localStorage.setItem("carrito", JSON.stringify(productoscarrito));
-
-    // Muestra una notificación de éxito
-    alert("Producto agregado al carrito");
-    console.log(productoscarrito);
-
-    // Puedes redirigir al usuario a la página del carrito o realizar otras acciones si es necesario
-  }
+  // Muestra una notificación de éxito
+  alert("Producto agregado al carrito");
+  console.log(productoscarrito);
+  // Puedes redirigir al usuario a la página del carrito o realizar otras acciones si es necesario
 }
 
 const actualizarBotonAgregar = () => {
   botonComprar = document.querySelectorAll(".botonComprar");
-
-  botonComprar.forEach((boton) => {
-    boton.addEventListener("click", agregarCarrito);
-  }
+  botonComprar.forEach((boton) =>
+    boton.addEventListener("click", agregarCarrito)
   );
-
 };
 
 // Función para cargar los productos del localStorage
@@ -212,7 +197,7 @@ function cargarProductosDelLocalStorage() {
   }
 }
 
-
+//Mariangel
 function mostrarcomentarios(infodata) {
   const container = document.getElementById("divcomentarios");
 
@@ -244,7 +229,7 @@ function mostrarcomentarios(infodata) {
     container.appendChild(divContenedor);
   });
 }
-
+//Mariangel
 function mostrarcomentarios(infodata) {
   const container = document.getElementById("divcomentarios");
 

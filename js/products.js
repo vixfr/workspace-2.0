@@ -1,9 +1,8 @@
-
+//Ale punto 1
 function setProductID(productId) {
   localStorage.setItem("productID", productId);
   window.location = "product-info.html";
 }
-
 
 let originalData; // Variable para almacenar los datos originales
 let currentData; // Variable para mantener los datos actuales (filtrados o no)
@@ -18,23 +17,20 @@ function mostrarProductos(data) {
   } else {
     data.products.forEach((producto) => {
       htmlContentToAppend += `
-        <div class="contProducto" onclick="setProductID(${producto.id})" >
+        <div class="contProducto" onclick="setProductID(${producto.id})">
           <img src="${producto.image}" class="imgProducto">
           <h2 class="nombre">${producto.name}</h2>
           <p class="precioProducto">${producto.currency} ${producto.cost}</p>
           <p id="descripcion">${producto.description}</p>
           <p>Vendidos: ${producto.soldCount}</p>
+
         </div>
       `;
-     
-  
     });
-
   }
 
   container.innerHTML = htmlContentToAppend;
 }
-
 
 // Evento para cargar los datos originales al principio
 document.addEventListener("DOMContentLoaded", () => {
@@ -129,5 +125,3 @@ document.addEventListener("DOMContentLoaded", () => {
   rangeFilterCount.addEventListener("click", filtrarPorRangoPrecio);
   clearRangeFilter.addEventListener("click", limpiarFiltro);
 });
-
-
