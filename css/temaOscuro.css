@@ -53,7 +53,7 @@
 .temaOscuro .contDescripcion,.temaOscuro #formulariocomentarios label,.temaOscuro #formulariocomentarios textarea{
 color: white;
 }
-.temaOscuro .contDescripcion span, .temaOscuro .contDescripcion h2,.temaOscuro .productosRelacionados p,.temaOscuro .productosRelacionados h3, .temaOscuro .contProducto .nombre,.temaOscuro #formulariocomentarios h2, .temaOscuro .orangeSell{
+.temaOscuro .contDescripcion span, .temaOscuro .contDescripcion h2,.temaOscuro .productosRelacionados p,.temaOscuro .productosRelacionados h3, .temaOscuro .contProducto .nombre,.temaOscuro #formulariocomentarios h2, .temaOscuro .orangeSell,.temaOscuro .backOranged {
   color: orangered !important;
 }
 .temaOscuro #divcomentarios .contcomentarios{
@@ -66,22 +66,26 @@ color: white;
 .temaOscuro #formulariocomentarios textarea, .temaOscuro #formulariocomentarios textarea::-webkit-scrollbar{
   background-color: #30353a;
 }
-.temaOscuro #formulariocomentarios #btnEnvio, .temaOscuro #btnVender{
+.temaOscuro #formulariocomentarios #btnEnvio, .temaOscuro #btnVender,.temaOscuro .botonComprar, .temaOscuro .btnOrange{
   background-color: orangered !important;
 }
+
 /*temas vender*/
 #marginTopSell{
   margin-top: 20px;
 }
-.temaOscuro #btnVender{
+.temaOscuro #btnVender, .temaOscuro .noBorde{
   border: none;
+}
+.temaOscuro .noShadow{
+  box-shadow: none;
 }
 .temaOscuro #seccionVenta input,.temaOscuro #seccionVenta select,.temaOscuro #seccionVenta textarea{
   background-color: #30353a;
   border: none;
   color: white;
 }
-.temaOscuro #file-upload,.temaOscuro #costos li{
+.temaOscuro #file-upload,.temaOscuro #costos li,.temaOscuro .inputs{
   background-color: #30353a;
 }
 .temaOscuro #seccionVenta #comissionText,.temaOscuro #seccionVenta #totalCostText,.temaOscuro #seccionVenta #productCostText{

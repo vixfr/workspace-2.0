@@ -6,10 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>eMercado - Todo lo que busques está aquí</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link href="css/carrito.css" />
+  <link href="css/temaOscuro.css" rel="stylesheet">
 </head>
 
 <body>
@@ -55,111 +58,71 @@
   </nav>
 
 
-  <main>
+  <main class="fondoOscuro1 letra-blanca">
     <div class="container">
 
-      <h2 class="alert-heading">Carrito de compras</h2>
-      <table class="table">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col"></th>
-            <th scope="col">Nombre</th>
-            <th scope="col">Costo</th>
-            <th scope="col">Cantidad</th>
-            <th scope="col">Subtotal</th>
-          </tr>
-        </thead>
-        <tbody id='tbody' class="table-group-divider">
+      <section class="h-100">
+        <div class="container h-100 py-5">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-10">
 
-        </tbody>
-      </table>
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="fw-normal mb-0 text-black backOranged">Carrito</h3>
+              </div>
+
+              <div id="carrito-div">
+
+              </div>
+              <div class="text-md-end text-center me-md-5 pe-lg-5">
+                <h5 class="text-success backOranged" id="sumaTotalUYU"></h5>
+                <h5 class="text-success backOranged" id="sumaTotalUSD"></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
     <div>
       <a href="categories.html"> Agrega productos a el carrito !</a>
     </div>
     <hr>
-<<<<<<< HEAD
-    <div id="carrito-div">
-<div>
-<h2>Tipo de envío</h2>
 
-<form>
+    <div id="carrito-div" class="fondoOscuro1">
 
-  <label>
-    <input type="radio" name="envio" value="premium"> Premium: de 2 a 5 dias (15%)
-  </label>
-
-  <label>
-    <input type="radio" name="envio" value="express"> Express: 5 a 8 días (7%)
-  </label>
- 
-  <label>
-    <input type="radio" name="envio" value="standard"> Standard: de 12 a 15 dias (5%)
-  </label>
-
-
-</form>
-<p id="totalApagar"> a ver que pasa </p>
-</div>
-
-<div>
-<h2>Dirección del envío</h2>
-
-  <form>
-<label>
-  <input type="text" name="calle" >Calle
-</label>
-
-<label>
-  <input type="number" name="numero" >Número
-</label>
-
-<label>
-  <input type="text" name="esquina" >Esquina
-</label>
-
-
-  </form>
-
-</div>
-</div>
-=======
-   
-    <div class="mx-4" id="carrito-div">
-      <form class="col-sm-8 col-md-8 col-lg-6 mx-auto">
-        <h3>Tipo de envío</h3>
-        <div class="mb-3">
-          <div class="mb-3 form-check">
-            <input type="radio" class="form-check-input" name="tarifa" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Premium: de 2 a 5 dias (15%)</label>
+      <div class="mx-4" id="carrito-div">
+        <form class="col-sm-8 col-md-8 col-lg-6 mx-auto">
+          <h3 class="backOranged ">Tipo de envío</h3>
+          <div class="mb-3">
+            <div class="mb-3 form-check">
+              <input type="radio" class="form-check-input" name="tarifa" id="exampleCheck1">
+              <label class="form-check-label" for="exampleCheck1">Premium: de 2 a 5 dias (15%)</label>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="radio" class="form-check-input" name="tarifa" id="exampleCheck2">
+              <label class="form-check-label" for="exampleCheck2">Express: 5 a 8 días (7%)</label>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="radio" class="form-check-input" name="tarifa" id="exampleCheck3">
+              <label class="form-check-label" for="exampleCheck3">Standard: de 12 a 15 dias (5%)</label>
+            </div>
+            <label for="exampleInputEmail1" class="form-label">Calle</label>
+            <input type="text" class="form-control inputs noBorde" id="exampleInputEmail1" aria-describedby="emailHelp">
           </div>
-          <div class="mb-3 form-check">
-            <input type="radio" class="form-check-input" name="tarifa" id="exampleCheck2">
-            <label class="form-check-label" for="exampleCheck2">Express: 5 a 8 días (7%)</label>
+          <h3 class="backOranged ">Dirección de envío</h3>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Número</label>
+            <input type="number" class="form-control inputs noBorde" id="exampleInputPassword1">
           </div>
-          <div class="mb-3 form-check">
-            <input type="radio" class="form-check-input" name="tarifa" id="exampleCheck3">
-            <label class="form-check-label" for="exampleCheck3">Standard: de 12 a 15 dias (5%)</label>
+          <div class="mb-3">
+            <label for="exampleInputText" class="form-label">Esquina</label>
+            <input type="number" class="form-control inputs noBorde" id="exampleInputText">
           </div>
-          <label for="exampleInputEmail1" class="form-label">Calle</label>
-          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-        <h3>Dirección de envío</h3>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Número</label>
-          <input type="number" class="form-control" id="exampleInputPassword1">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputText" class="form-label">Esquina</label>
-          <input type="number" class="form-control" id="exampleInputText">
-        </div>
-        <button type="submit" class="btn btn-primary mx-auto">Comprar</button>
-      </form>
-    </div>
->>>>>>> 7653ef9957273d782ed76ea976b5427422ac95c1
+          <button type="submit" class="btn btn-primary mx-auto btnOrange letra-blanca noBorde">Comprar</button>
+        </form>
+      </div>
 
   </main>
-  <footer class="text-muted">
+  <footer class="text-muted fondoOscuro1 letra-blanca">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
@@ -180,6 +143,7 @@
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>
   <script src="js/product-info.js"></script>
+  <script src="js/temaOscuro.js"></script>
 
 </body>
 
