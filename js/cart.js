@@ -1,106 +1,127 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const tbody = document.getElementById("tbody");
   const carritoDiv = document.getElementById("carrito-div");
-
+  const formCarrito = document.getElementById("form-carrito")
   // Obtén el carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-  let subtotales = []; //Arreglo para suma total a pagar
+  let subtotales = [];
   let suma = 0;
+
   // Función para mostrar los productos en el carrito
   const mostrarCarrito = () => {
-    tbody.innerHTML = ""; // Limpia el contenedor actual
+    carritoDiv.innerHTML = ""; // Limpia el contenedor actual
 
     if (carrito.length > 0) {
       // El carrito tiene elementos, muestra el carrito
-      carritoDiv.style.display = "block";
+      formCarrito.style.display = "block"
 
       // Itera a través del arreglo de IDs de productos en el carrito
       carrito.forEach((producto, index) => {
-        // Crea elementos HTML para mostrar los detalles del producto y agrégalos a tbody
-        const filaProducto = document.createElement("tr");
-        filaProducto.classList.add("table")
+        const divProducto = document.createElement("div");
+        divProducto.classList.add("card", "rounded-3", "mb-6", "col-sm-12", "mx-auto", "mb-2", "col-mb-12");
+        divProducto.setAttribute("style", "min-width: 200px;");
+        divProducto.id = `producto-${index}`;
+        divProducto.innerHTML = `
+          <div class="card-body p-3 mx-auto text-center fondoOscuro2 noShadow">
+            <div class="row d-flex justify-content-between align-items-center">
+              <div class="col-md-2">
+                <img src="${producto.images[0]}" class="img-fluid rounded-3" alt="Cotton T-shirt">
+              </div>
+              <div class="col-md-3">
+                <p class="lead fw-normal mb-2">${producto.name}</p>
+              </div>
+              <div class="col-md-3 d-flex">
+                <button class="btn btn-link px-2 btnCantidad" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                  <i class="fas fa-minus"></i>
+                </button>
+                <input id="elemento-${index}" min="1" name="quantity" type="number" class="form-control form-control-color" />
+                <button class="btn btn-link px-2  btnCantidad" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                  <i class="fas fa-plus"></i>
+                </button>
+              </div>
+              <div class="col-md-2 offset-md-1">
+                <h5 class="mb-0 subTotal" id="subTotal-${index}"> ${producto.currency} ${producto.cost}</h5>
+              </div>
+              <div class="col-md-1 col-lg-1 col-xl-1 text-end d-flex align-items-center">
+                <a href="#!" class="text-danger" id="btnEliminar-${index}">
+                  <i class="fas fa-trash fa-lg"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+        carritoDiv.appendChild(divProducto);
 
-        const imagenProducto = document.createElement("td");
-        const imagen = document.createElement("img");
-        imagen.classList.add("col-sm-6","col-md-6")
-        imagen.src = producto.images[0];
-        imagenProducto.appendChild(imagen);
-        filaProducto.appendChild(imagenProducto);
+        const masMenos = document.querySelectorAll(".btnCantidad");
+        const input = document.getElementById(`elemento-${index}`);
+        const subTotal = document.getElementById(`subTotal-${index}`);
+        const btnEliminar = document.getElementById(`btnEliminar-${index}`);
 
-        const nombreProducto = document.createElement("td");
-        nombreProducto.textContent = producto.name;
-        filaProducto.appendChild(nombreProducto);
+        // Cargar cantidad desde el localStorage y configurar el input
+        const cantidadGuardada = localStorage.getItem(`cantidad-${index}`);
+        if (cantidadGuardada) {
+          input.value = cantidadGuardada;
+        } else {
+          input.value = 1;
+        }
 
-        const costoProducto = document.createElement("td");
-        costoProducto.textContent = producto.currency + producto.cost;
-        filaProducto.appendChild(costoProducto);
+        // Agregar evento para eliminar un producto del carrito
+        btnEliminar.addEventListener("click", () => {
+          // Elimina el producto del carrito
+          carrito.splice(index, 1);
+          // Elimina la cantidad guardada en el localStorage
+          localStorage.removeItem(`cantidad-${index}`);
+          // Guarda el carrito actualizado en el localStorage
+          localStorage.setItem("carrito", JSON.stringify(carrito));
+          // Vuelve a mostrar el carrito actualizado
+          mostrarCarrito();
+          actualizarSumaTotal();
+        });
 
-        const cantidadProducto = document.createElement("td");
-        const cantidadInput = document.createElement("input");
-        cantidadInput.className = "form-control form-control-color";
-        cantidadInput.type = "number";
-        cantidadInput.id = `cantidad${index}`; // Agrega un ID único para el input
-        cantidadInput.addEventListener("input", actualizarSubtotal); // Agrega un evento input
-        cantidadProducto.appendChild(cantidadInput);
-        filaProducto.appendChild(cantidadProducto);
+        input.addEventListener("change", () => {
+          const cantidad = parseInt(input.value, 10);
+          const subtotal = cantidad * producto.cost;
+          subTotal.textContent = `${producto.currency} ${subtotal}`;
+          actualizarSumaTotal(); // Actualiza la suma total cuando cambia la cantidad
+          // Guarda la cantidad en el localStorage
+          localStorage.setItem(`cantidad-${index}`, cantidad);
+        });
 
-        const subTotal = document.createElement("td");
-        subTotal.innerHTML = `<p id="subtotal${index}"></p>`;
-        filaProducto.appendChild(subTotal);
-
-        const eliminarProducto = document.createElement("td"); // Agregar columna para el botón Eliminar
-        const botonEliminar = document.createElement("button");
-        botonEliminar.textContent = "Eliminar";
-        botonEliminar.addEventListener("click", () =>
-          eliminarProductoDelCarrito(index)
-        ); // Agregar evento para eliminar
-        eliminarProducto.appendChild(botonEliminar);
-        filaProducto.appendChild(eliminarProducto);
-
-        tbody.appendChild(filaProducto);
+        Array.from(masMenos).forEach((boton) => {
+          boton.addEventListener("click", () => {
+            const cantidad = parseInt(input.value, 10);
+            const subtotal = cantidad * producto.cost;
+            subTotal.textContent = `${producto.currency} ${subtotal}`;
+            actualizarSumaTotal(); // Actualiza la suma total cuando se hacen clics en las flechas
+            // Guarda la cantidad en el localStorage
+            localStorage.setItem(`cantidad-${index}`, cantidad);
+          });
+        });
       });
-    } else {
-      // El carrito está vacío, oculta el carrito
-      carritoDiv.style.display = "none";
+    }
+    else {
+      carritoDiv.innerHTML = "<h5 class=`letraBlanca`>Aún no hay productos en el carrito</h5>";
+formCarrito.style.display="none"
     }
   };
 
-  let subtotal = 0;
-  // Función para actualizar el subtotal cuando se cambia la cantidad
-  const actualizarSubtotal = (event) => {
-    const index = event.target.id.replace("cantidad", ""); // Obtiene el índice de la fila
-    const cantidad = event.target.value;
-    const costo = carrito[index].cost;
-    subtotal = cantidad * costo;
-    subtotales[index] = subtotal; //Almacena el subtotal en el arreglo creado arriba
-    document.getElementById(`subtotal${index}`).textContent = subtotal;
-
-    //suma total de precios
-    suma = subtotales.reduce((total, subtotal) => total + subtotal, 0);
-    //mostrar total a pagar:
-    totalApagar.textContent = suma;
-  };
-
-  // Función para eliminar un producto del carrito
-
-  const eliminarProductoDelCarrito = (index) => {
-    // Resta el costo del producto eliminado de la suma total
-    suma -= subtotales[index];
-
-    // Actualiza el elemento HTML con el nuevo valor de suma
-    totalApagar.textContent = suma;
-
-    // Elimina el producto del array
-    carrito.splice(index, 1);
-
-    // Actualiza el carrito en el localStorage
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-
-    // Vuelve a mostrar el carrito actualizado
-    mostrarCarrito();
-  };
-
-  // Llama a la función para mostrar el carrito cuando se carga la página
   mostrarCarrito();
+  actualizarSumaTotal();
 });
+function actualizarSumaTotal() {
+  const totalEnPantallaUYU = document.getElementById("sumaTotalUYU")
+  const totalEnPantallaUSD = document.getElementById("sumaTotalUSD")
+  const subTotales = document.querySelectorAll(".subTotal");
+  let sumaTotalUYU = 0;
+  let sumaTotalUSD = 0;
+
+  Array.from(subTotales).forEach((subTotal) => {
+    if (subTotal.textContent.includes("UYU")) {
+      sumaTotalUYU += parseFloat(subTotal.textContent.replace(/\D/g, ''));
+    } else {
+      sumaTotalUSD += parseFloat(subTotal.textContent.replace(/\D/g, ''));
+    }
+  });
+  totalEnPantallaUYU.innerHTML = `<span class="text-info-emphasis">Total en UYU</span> ${sumaTotalUYU}`;
+  totalEnPantallaUSD.innerHTML = `<span class="text-info-emphasis">Total en USD</span> ${sumaTotalUSD}`;
+}
