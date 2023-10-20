@@ -89,32 +89,39 @@
     <div id="formEnvio" class="fondoOscuro1">
 
       <div class="mx-4" id="carrito-div">
-        <form class="col-sm-8 col-md-8 col-lg-6 mx-auto">
+        <form class="col-sm-8 col-md-8 col-lg-6 mx-auto needs-validation" novalidate>
           <h3 class="backOranged">Tipo de envío</h3>
           <div class="mb-3">
             <div class="mb-3 form-check">
-              <input type="radio" class="form-check-input tarifa" name="tarifa" id="premium" onChange="actualizarSumaTotal()">
+              <input type="radio" class="form-check-input tarifa" name="tarifa" id="premium" onChange="actualizarSumaTotal()" required>
               <label class="form-check-label" for="premium">Premium: de 2 a 5 días (15%)</label>
             </div>
             <div class="mb-3 form-check">
-              <input type="radio" class="form-check-input tarifa " name="tarifa" id="express" onChange="actualizarSumaTotal()">
+              <input type="radio" class="form-check-input tarifa " name="tarifa" id="express" onChange="actualizarSumaTotal()" required>
               <label class="form-check-label" for="express">Express: 5 a 8 días (7%)</label>
             </div>
             <div class="mb-3 form-check">
-              <input type="radio" class="form-check-input tarifa" name="tarifa" id="standard" onChange="actualizarSumaTotal()">
+              <input type="radio" class="form-check-input tarifa" name="tarifa" id="standard" onChange="actualizarSumaTotal()" required>
               <label class="form-check-label" for="standard">Standard: de 12 a 15 días (5%)</label>
+          
+              <div class="invalid-feedback">Debe seleccionar una opción</div>
+
             </div>
             <label for="calle" class="form-label">Calle</label>
-            <input type="text" class="form-control inputs noBorde" id="calle" aria-describedby="emailHelp">
+            <input type="text" class="form-control inputs noBorde" id="calle" aria-describedby="emailHelp" required>
+            <div class="invalid-feedback">Debe seleccionar una calle</div>
           </div>
+          
           <h3 class="backOranged">Dirección de envío</h3>
           <div class="mb-3">
             <label for="numero" class="form-label">Número</label>
-            <input type="number" class="form-control inputs noBorde" id="numero">
+            <input type="number" class="form-control inputs noBorde" id="numero" required>
+            <div class="invalid-feedback">Debe seleccionar un número</div>
           </div>
           <div class="AC-3">
             <label for="esquina" class="form-label">Esquina</label>
-            <input type="number" class="form-control inputs noBorde" id="esquina">
+            <input type="number" class="form-control inputs noBorde" id="esquina" required>
+            <div class="invalid-feedback">Debe seleccionar una esquina</div>
           </div>
 
 
@@ -190,7 +197,7 @@
               </div>
             </div>
           </div>
-          <button type="submit" class="btn btn-primary mx-auto btnOrange letra-blanca noBorde">Comprar</button>
+          <input type="submit" class="btn btn-primary mx-auto btnOrange letra-blanca noBorde" value="Comprar"/>
         </form>
       </div>
 
