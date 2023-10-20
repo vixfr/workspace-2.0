@@ -1,7 +1,7 @@
 //Desafíate.2 mariangel
 document.addEventListener("DOMContentLoaded", () => {
   const carritoDiv = document.getElementById("carrito-div");
-  const formEnvio = document.getElementById("formEnvio")
+  const formEnvio = document.getElementById("formEnvio");
   // Obtén el carrito del localStorage
   let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
@@ -20,7 +20,15 @@ document.addEventListener("DOMContentLoaded", () => {
       // Itera a través del arreglo de IDs de productos en el carrito
       carrito.forEach((producto, index) => {
         const divProducto = document.createElement("div");
-        divProducto.classList.add("card", "rounded-3", "mb-6", "col-sm-12", "mx-auto", "mb-2", "col-mb-12");
+        divProducto.classList.add(
+          "card",
+          "rounded-3",
+          "mb-6",
+          "col-sm-12",
+          "mx-auto",
+          "mb-2",
+          "col-mb-12"
+        );
         divProducto.setAttribute("style", "min-width: 200px;");
         divProducto.id = `producto-${index}`;
         divProducto.innerHTML = `
@@ -79,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
           mostrarCarrito();
           actualizarSumaTotal();
         });
-//Punto 3.1 Agus
+        //Punto 3.1 Agus
         input.addEventListener("change", () => {
           const cantidad = parseInt(input.value, 10);
           const subtotal = cantidad * producto.cost;
@@ -100,9 +108,9 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         });
       });
-    }
-    else {
-      carritoDiv.innerHTML = "<h5 class=`letraBlanca`>Aún no hay productos en el carrito</h5>";
+    } else {
+      carritoDiv.innerHTML =
+        "<h5 class=`letraBlanca`>Aún no hay productos en el carrito</h5>";
       formEnvio.style.display = "none";
     }
   };
@@ -112,19 +120,66 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 //Punto 3.2
 function actualizarSumaTotal() {
-  const totalEnPantallaUYU = document.getElementById("sumaTotalUYU")
-  const totalEnPantallaUSD = document.getElementById("sumaTotalUSD")
+  const totalEnPantallaUYU = document.getElementById("sumaTotalUYU");
+  const totalEnPantallaUSD = document.getElementById("sumaTotalUSD");
+  const subtotalgeneral = document.getElementById("subtotal");
+  const total = document.getElementById("total");
+  const costoEnvio = document.getElementById("costoEnvio");
   const subTotales = document.querySelectorAll(".subTotal");
   let sumaTotalUYU = 0;
   let sumaTotalUSD = 0;
 
   Array.from(subTotales).forEach((subTotal) => {
     if (subTotal.textContent.includes("UYU")) {
-      sumaTotalUYU += parseFloat(subTotal.textContent.replace(/\D/g, ''));
+      sumaTotalUYU += parseFloat(subTotal.textContent.replace(/\D/g, ""));
     } else {
-      sumaTotalUSD += parseFloat(subTotal.textContent.replace(/\D/g, ''));
+      sumaTotalUSD += parseFloat(subTotal.textContent.replace(/\D/g, ""));
     }
   });
   totalEnPantallaUYU.innerHTML = `<span class="text-info-emphasis">Total en UYU</span> ${sumaTotalUYU}`;
   totalEnPantallaUSD.innerHTML = `<span class="text-info-emphasis">Total en USD</span> ${sumaTotalUSD}`;
+
+  //pasa subtotales a pesos
+  let sumaSubtotal = sumaTotalUYU + sumaTotalUSD * 40;
+
+  subtotalgeneral.textContent = "UYU " + sumaSubtotal;
+
+  //actualiza costo envío
+  let radioButtons = document.querySelectorAll(".tarifa");
+
+  let tarifaSeleccionada = null;
+
+  radioButtons.forEach(function (radioButton) {
+    if (radioButton.checked) {
+      tarifaSeleccionada = radioButton.id;
+    }
+  });
+
+  let porcentajeCosto = 0;
+
+  if (tarifaSeleccionada === "premium") {
+    porcentajeCosto = 15;
+  } else if (tarifaSeleccionada === "express") {
+    porcentajeCosto = 7;
+  } else if (tarifaSeleccionada === "standard") {
+    porcentajeCosto = 5;
+  }
+
+  // Calcula el total numérico
+
+  // Formatea el total numérico como cadena con el formato deseado
+
+  const precioEnvio = (sumaSubtotal * parseInt(porcentajeCosto)) / 100;
+
+  let precioEnvioNum = parseFloat(precioEnvio);
+
+  costoEnvio.textContent = "UYU " + precioEnvioNum;
+
+  //ACTUALIZA TOTALAC A PAGAR
+  let totalNum = sumaSubtotal + precioEnvioNum;
+
+  total.textContent = "UYU " + totalNum.toFixed(2);
+
+  // const totalNum = parseFloat(TOTAL).toFixed(2);
+  // total.textContent = "UYU " + totalNum;
 }
