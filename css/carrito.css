@@ -1,3 +1,12 @@
 .btnAgregarCarrito svg{
     margin-top: -5px;
 }
+
+/* .invalid-feedback{
+    display: none;
+  } */
+
+
+  .resumenCostos  {
+    background-color: white;
+  }

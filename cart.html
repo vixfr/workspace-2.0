@@ -128,84 +128,93 @@
       
             
 
-
-          <h3>Resumen de Costos</h3>
-          <div class="card mb-3">
+<div class="resumenCostos">
+          <h3  class="fondoOscuro1">Resumen de Costos</h3>
+          <div class="card mb-3 fondoOscuro1">
             <div class="card-body">
               <h5 class="card-title" >Subtotal</h5>
               <p class="card-text" id="subtotal">0</p>
             </div>
           </div>
-          <div class="card mb-3">
+          <div class="card mb-3 fondoOscuro1">
             <div class="card-body">
               <h5 class="card-title">Costos de Envío</h5>
               <p class="card-text" id="costoEnvio">0</p>
             </div>
           </div>
-          <div class="card mb-3">
+          <div class="card mb-3 fondoOscuro1">
             <div class="card-body">
               <h5 class="card-title">Total</h5>
               <p class="card-text" id="total">0</p>
             </div>
           </div>
+        
 
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <button type="button" class="btn btn-primary fondoOscuro2" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Seleccionar forma de pago
           </button>
-          
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h1 class="modal-title fs-5" id="tituloPago">Seleccione un método de pago</h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                 
-                  
-                  <div class="form-check">
-                    <input type="radio" class="form-check-input" name="metodoPago" id="tarjetaCredito" checked>
-                    <label class="form-check-label" for="tarjetaCredito">Tarjeta de Crédito</label>
-                  </div>
-                 <br>
-                  <div class="form-group">
-                    <label for="numeroTarjeta">Numero de Tarjeta</label>
-                    <input type="text" class="form-control" id="numeroTarjeta">
-                  </div>
-                  <div class="form-group">
-                    <label for="numeroTarjeta">Código de seguridad</label>
-                    <input type="text" class="form-control" id="codigoSeguridad">
-                  </div>
-                  <div class="form-group">
-                    <label for="numeroTarjeta">Vencimiento</label>
-                    <input type="text" class="form-control" id="vencimiento">
-                  </div>
-                  <hr>
-                  <div class="form-check">
-                    <input type="radio" class="form-check-input" name="metodoPago" id="transferenciaBancaria" checked>
-                    <label class="form-check-label" for="transferenciaBancaria">Transferencia Bancaria</label>
-                  </div>
-                  <br>
-                  <div class="form-group">
-                    <label for="numeroCuenta">Número de cuenta</label>
-                    <input type="text" class="form-control" id="numeroCuenta">
-                  </div>
-                  <!-- Completar el resto de inputs del modal -->
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-              </div>
-            </div>
-          </div>
           <input type="submit" class="btn btn-primary mx-auto btnOrange letra-blanca noBorde" value="Comprar"/>
+
+          
+          <div id="terminos" class="invalid-feedback">Debe seleccionar un medio de pago</div>
+        </div>
         </form>
       </div>
       </div>
-
+      
+     
+         <!-- Modal -->
+<div class="modal fade fondoOscuro1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <form class="modal-dialog needs-validation  fondoOscuro1" novalidate>
+    <div class="modal-content fondoOscuro1">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="tituloPago">Seleccione un método de pago:</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-check">
+          <input type="radio" class="form-check-input checkMedioPago modalPago" name="metodoPago" id="tarjetaCredito" required>
+          <label class="form-check-label" for="tarjetaCredito">Tarjeta de Crédito</label>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="numeroTarjeta">Numero de Tarjeta</label>
+          <input type="text" class="form-control modalPago" id="numeroTarjeta" required>
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <div class="form-group">
+          <label for="codigoSeguridad">Código de seguridad</label>
+          <input type="text" class="form-control modalPago" id="codigoSeguridad" required>
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <div class="form-group">
+          <label for="vencimiento">Vencimiento</label>
+          <input type="text" class="form-control modalPago" id="vencimiento" required>
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+        <hr>
+        <div class="form-check">
+          <input type="radio" class="form-check-input checkMedioPago modalPago" name="metodoPago" id="transferenciaBancaria" required>
+          <label class="form-check-label" for="transferenciaBancaria">Transferencia Bancaria</label>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for ="numeroCuenta">Número de cuenta</label>
+          <input type="text" class="form-control modalPago" id="numeroCuenta" required>
+          <div class="invalid-feedback">Este campo es obligatorio</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </form>
+</div>
+</div>
+</div>
+      <!-- form-check-input -->
 
   </main>
   <footer class="text-muted fondoOscuro1 letra-blanca">

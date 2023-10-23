@@ -182,25 +182,39 @@ function actualizarSumaTotal() {
 }
 
 // VALIDACION BOOSTRAP
-(() => {
-  "use strict";
 
-  // Fetch all the forms we want to apply custom Bootstrap validation styles to
-  const forms = document.querySelectorAll(".needs-validation");
+// JavaScript para las validaciones Bootstrap
+// JavaScript para las validaciones Bootstrap
+("strict");
 
-  // Loop over them and prevent submission
-  Array.from(forms).forEach((form) => {
-    form.addEventListener(
-      "submit",
-      (event) => {
-        if (!form.checkValidity()) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
+// Fetch all the forms we want to apply custom Bootstrap validation styles to
+const forms = document.querySelectorAll(".needs-validation");
+const checkBoxs = document.querySelectorAll(".checkMedioPago");
+const feedbackDiv = document.getElementById("terminos");
+const modalPagos = document.querySelectorAll(".modalPago");
 
-        form.classList.add("was-validated");
-      },
-      false
-    );
+// Loop over them and prevent submission
+Array.from(forms).forEach((form) => {
+  form.addEventListener("submit", (event) => {
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+
+    form.classList.add("was-validated");
+
+    let pagoSeleccionado = false;
+
+    checkBoxs.forEach((box) => {
+      if (box.checked) {
+        pagoSeleccionado = true;
+      }
+    });
+
+    if (pagoSeleccionado) {
+      feedbackDiv.style.display = "none";
+    } else {
+      feedbackDiv.style.display = "block";
+    }
   });
-})();
+});
