@@ -115,6 +115,22 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  $('input[name="metodoPago"]').change(function () {
+    if ($('#tarjetaCredito').is(':checked')) {
+      // Habilitar campos de tarjeta de crédito y deshabilitar campos de transferencia bancaria
+      $('#numeroTarjeta, #codigoSeguridad, #vencimiento').prop('disabled', false);
+      $('#numeroCuenta').prop('disabled', true);
+    } else if ($('#transferenciaBancaria').is(':checked')) {
+      // Habilitar campos de transferencia bancaria y deshabilitar campos de tarjeta de crédito
+      $('#numeroTarjeta, #codigoSeguridad, #vencimiento').prop('disabled', true);
+      $('#numeroCuenta').prop('disabled', false);
+    }
+    /* 
+$('input[name="metodoPago"]').change(function() { ... }) selecciona todos los elementos <input> con el atributo name igual a "metodoPago" y agrega un manejador de eventos change a ellos.
+$('#tarjetaCredito').is(':checked') verifica si el radio button con el id "tarjetaCredito" está marcado.
+$('#numeroTarjeta, #codigoSeguridad, #vencimiento').prop('disabled', false); y $('#numeroCuenta').prop('disabled', true); se utilizan para habilitar o deshabilitar los campos de entrada correspondientes. Aquí, $() se usa para seleccionar elementos por su id o múltiples elementos separados por comas.
+En resumen, jQuery simplifica la selección de elementos del DOM y la manipulación de propiedades de los elementos, como disabled, lo que hace que el código sea más conciso y fácil de entender. */
+  });
   mostrarCarrito();
   actualizarSumaTotal();
 });

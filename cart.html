@@ -11,7 +11,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/font-awesome.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
-  <link href="css/carrito.css" />
+  <link href="css/carrito.css" rel="stylesheet">
   <link href="css/temaOscuro.css" rel="stylesheet">
 </head>
 
@@ -80,141 +80,148 @@
       </section>
     </div>
     <div>
-      <a href="categories.html"> Agrega productos a el carrito !</a>
+      <a href="categories.html" class="backOranged"> Agrega productos a el carrito !</a>
     </div>
     <hr>
 
-    <!-- Punto 2  vicki-->
-    <!-- Controles gráficos formulario de envío -->
-    <div id="formEnvio" class="fondoOscuro1">
-      <div class="mx-4" id="carrito-div">
+  
+    <div id="formEnvio" class="fondoOscuro1 mx-md-5 mx-auto">
         <form class="col-12 col-lg-8 mx-auto needs-validation" novalidate>
           <h3 class="backOranged">Tipo de envío</h3>
           <div class="mb-3">
             <div class="mb-3 form-check">
-              <input type="radio" class="form-check-input tarifa" name="tarifa" id="premium" onChange="actualizarSumaTotal()" required>
+              <input type="radio" class="form-check-input tarifa" name="tarifa" id="premium"
+                onChange="actualizarSumaTotal()" required>
               <label class="form-check-label" for="premium">Premium: de 2 a 5 días (15%)</label>
             </div>
             <div class="mb-3 form-check">
-              <input type="radio" class="form-check-input tarifa " name="tarifa" id="express" onChange="actualizarSumaTotal()" required>
-              <label class="form-check-label" for ="express">Express: 5 a 8 días (7%)</label>
+              <input type="radio" class="form-check-input tarifa " name="tarifa" id="express"
+                onChange="actualizarSumaTotal()" required>
+              <label class="form-check-label" for="express">Express: 5 a 8 días (7%)</label>
             </div>
             <div class="mb-3 form-check">
-              <input type="radio" class="form-check-input tarifa" name="tarifa" id="standard" onChange="actualizarSumaTotal()" required>
+              <input type="radio" class="form-check-input tarifa" name="tarifa" id="standard"
+                onChange="actualizarSumaTotal()" required>
               <label class="form-check-label" for="standard">Standard: de 12 a 15 días (5%)</label>
               <div class="invalid-feedback">Debe seleccionar una opción</div>
             </div>
           </div>
-          <div class="container px-4 ">
-            <label class="backOranged p-3">Dirección de envío</label>
-            <div class="row justify-content-start gx-5">
-              <div class="col-lg-6 justify-content-start ">
-                <label for="calle" class="form-label p-3">Calle</label>
-                <input type="text" class="form-control inputs noBorde p-3" id="calle" aria-describedby="emailHelp" required>
-                <div class="invalid-feedback p-3">Debe seleccionar una calle</div>
-              </div>
-              <div class="col-lg-6 justify-content-start ">
-                <label for="numero" class="form-label p-3">Número</label>
-                <input type="number" class="form-control inputs noBorde p-3" id="numero" required>
-                <div class="invalid-feedback p-3">Debe seleccionar un número</div>
-</div>
-<div class="col-lg-6 justify-content-start ">
-                <label for="esquina" class="form-label p-3">Esquina</label>
-                <input type="text" class="form-control inputs noBorde p-3" id="esquina" required>
-                <div class="invalid-feedback p-3">Debe seleccionar una esquina</div>
-              </div>
+        <h3 class="fondoOscuro1 backOranged">Dirección de envío</h3>
+        <div class="container p-0">
+          <div class="row">
+            <div class="col-lg-6 justify-content-start">
+              <label for="calle" class="form-label p-1">Calle</label>
+              <input type="text" class="form-control form-control-sm noBorde p-2" id="calle" aria-describedby="emailHelp"
+                required>
+              <div class="invalid-feedback p-3">Debe seleccionar una calle</div>
+            </div>
+            <div class="col-lg-6 justify-content-start">
+              <label for="numero" class="form-label p-1">Número</label>
+              <input type="number" class="form-control form-control-sm noBorde p-2" id="numero" required>
+              <div class="invalid-feedback p-3">Debe seleccionar un número</div>
+            </div>
+            <div class="col-lg-6 justify-content-start mb-3">
+              <label for="esquina" class="form-label p-1">Esquina</label>
+              <input type="text" class="form-control form-control-sm noBorde p-2" id="esquina" required>
+              <div class="invalid-feedback p-3">Debe seleccionar una esquina</div>
             </div>
           </div>
-      
-            
-
-<div class="resumenCostos">
-          <h3  class="fondoOscuro1">Resumen de Costos</h3>
-          <div class="card mb-3 fondoOscuro1">
-            <div class="card-body">
-              <h5 class="card-title" >Subtotal</h5>
-              <p class="card-text" id="subtotal">0</p>
-            </div>
-          </div>
-          <div class="card mb-3 fondoOscuro1">
-            <div class="card-body">
-              <h5 class="card-title">Costos de Envío</h5>
-              <p class="card-text" id="costoEnvio">0</p>
-            </div>
-          </div>
-          <div class="card mb-3 fondoOscuro1">
-            <div class="card-body">
-              <h5 class="card-title">Total</h5>
-              <p class="card-text" id="total">0</p>
-            </div>
-          </div>
-        
-
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary fondoOscuro2" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Seleccionar forma de pago
-          </button>
-          <input type="submit" class="btn btn-primary mx-auto btnOrange letra-blanca noBorde" value="Comprar"/>
-
-          
-          <div id="terminos" class="invalid-feedback">Debe seleccionar un medio de pago</div>
         </div>
+
+
+
+
+          <div class="resumenCostos fondoOscuro1">
+            <h3 class="fondoOscuro1 backOranged">Resumen de Costos</h3>
+            <div class="card mb-3 fondoOscuro1">
+              <div class="card-body">
+                <h5 class="card-title backOranged">Subtotal</h5>
+                <p class="card-text" id="subtotal">0</p>
+              </div>
+            </div>
+            <div class="card mb-3 fondoOscuro1">
+              <div class="card-body">
+                <h5 class="card-title backOranged">Costos de Envío</h5>
+                <p class="card-text" id="costoEnvio">0</p>
+              </div>
+            </div>
+            <div class="card mb-3 fondoOscuro1">
+              <div class="card-body">
+                <h5 class="card-title backOranged">Total</h5>
+                <p class="card-text" id="total">0</p>
+              </div>
+            </div>
+
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btnOrange letra-blanca noBorde btnTurqu" data-bs-toggle="modal"
+              data-bs-target="#exampleModal">
+              Seleccionar forma de pago
+            </button>
+            <input type="submit" class="btn btn-primary mx-auto btnOrange letra-blanca noBorde btnTurqu" value="Comprar" />
+
+
+            <div id="terminos" class="invalid-feedback">Debe seleccionar un medio de pago</div>
+          </div>
         </form>
       </div>
-      </div>
-      
-     
-         <!-- Modal -->
-<div class="modal fade fondoOscuro1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <form class="modal-dialog needs-validation  fondoOscuro1" novalidate>
-    <div class="modal-content fondoOscuro1">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="tituloPago">Seleccione un método de pago:</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="form-check">
-          <input type="radio" class="form-check-input checkMedioPago modalPago" name="metodoPago" id="tarjetaCredito" required>
-          <label class="form-check-label" for="tarjetaCredito">Tarjeta de Crédito</label>
-        </div>
-        <br>
-        <div class="form-group">
-          <label for="numeroTarjeta">Numero de Tarjeta</label>
-          <input type="text" class="form-control modalPago" id="numeroTarjeta" required>
-          <div class="invalid-feedback">Este campo es obligatorio</div>
-        </div>
-        <div class="form-group">
-          <label for="codigoSeguridad">Código de seguridad</label>
-          <input type="text" class="form-control modalPago" id="codigoSeguridad" required>
-          <div class="invalid-feedback">Este campo es obligatorio</div>
-        </div>
-        <div class="form-group">
-          <label for="vencimiento">Vencimiento</label>
-          <input type="text" class="form-control modalPago" id="vencimiento" required>
-          <div class="invalid-feedback">Este campo es obligatorio</div>
-        </div>
-        <hr>
-        <div class="form-check">
-          <input type="radio" class="form-check-input checkMedioPago modalPago" name="metodoPago" id="transferenciaBancaria" required>
-          <label class="form-check-label" for="transferenciaBancaria">Transferencia Bancaria</label>
-        </div>
-        <br>
-        <div class="form-group">
-          <label for ="numeroCuenta">Número de cuenta</label>
-          <input type="text" class="form-control modalPago" id="numeroCuenta" required>
-          <div class="invalid-feedback">Este campo es obligatorio</div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Save changes</button>
-      </div>
     </div>
-  </form>
-</div>
-</div>
-</div>
-      <!-- form-check-input -->
+
+
+    <!-- Modal -->
+    <div class="modal fade fondoOscuro1" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <form class="modal-dialog needs-validation  fondoOscuro1" novalidate>
+        <div class="modal-content fondoOscuro1">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 backOranged" id="tituloPago">Seleccione un método de pago:</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-check">
+              <input type="radio" class="form-check-input checkMedioPago modalPago" name="metodoPago"
+                id="tarjetaCredito" required>
+              <label class="form-check-label backOranged" for="tarjetaCredito">Tarjeta de Crédito</label>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="numeroTarjeta">Numero de Tarjeta</label>
+              <input type="text" class="form-control modalPago" id="numeroTarjeta" required>
+              <div class="invalid-feedback">Este campo es obligatorio</div>
+            </div>
+            <div class="form-group">
+              <label for="codigoSeguridad">Código de seguridad</label>
+              <input type="text" class="form-control modalPago" id="codigoSeguridad" required>
+              <div class="invalid-feedback">Este campo es obligatorio</div>
+            </div>
+            <div class="form-group">
+              <label for="vencimiento">Vencimiento</label>
+              <input type="text" class="form-control modalPago" id="vencimiento" required>
+              <div class="invalid-feedback">Este campo es obligatorio</div>
+            </div>
+            <hr>
+            <div class="form-check">
+              <input type="radio" class="form-check-input checkMedioPago modalPago" name="metodoPago"
+                id="transferenciaBancaria" required>
+              <label class="form-check-label backOranged" for="transferenciaBancaria">Transferencia Bancaria</label>
+            </div>
+            <br>
+            <div class="form-group">
+              <label for="numeroCuenta">Número de cuenta</label>
+              <input type="text" class="form-control modalPago" id="numeroCuenta" required>
+              <div class="invalid-feedback">Este campo es obligatorio</div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btnOrange noBorde btnTurqu" data-bs-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary btnOrange noBorde btnTurqu">Save changes</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    </div>
+    </div>
+    <!-- form-check-input -->
 
   </main>
   <footer class="text-muted fondoOscuro1 letra-blanca">
@@ -234,6 +241,7 @@
       <div></div>
     </div>
   </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/cart.js"></script>

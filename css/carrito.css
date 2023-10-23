@@ -1,12 +1,10 @@
 .btnAgregarCarrito svg{
     margin-top: -5px;
 }
-
-/* .invalid-feedback{
-    display: none;
-  } */
-
-
   .resumenCostos  {
     background-color: white;
+  }
+  .btnTurqu{
+ background-color:rgb(10, 91, 89);
+ color:white;
   }
