@@ -1,4 +1,4 @@
-//Desafíate.2 mariangel
+
 document.addEventListener("DOMContentLoaded", () => {
   const carritoDiv = document.getElementById("carrito-div");
   const formEnvio = document.getElementById("formEnvio");
@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           input.value = 1;
         }
-
+//Agus desafíate
         // Agregar evento para eliminar un producto del carrito
         btnEliminar.addEventListener("click", () => {
           // Elimina el producto del carrito
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
           mostrarCarrito();
           actualizarSumaTotal();
         });
-        //Punto 3.1 Agus
+        
         input.addEventListener("change", () => {
           const cantidad = parseInt(input.value, 10);
           const subtotal = cantidad * producto.cost;
@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
       formEnvio.style.display = "none";
     }
   };
-
+//Viky Jquery punto 2.2
   $('input[name="metodoPago"]').change(function () {
     if ($('#tarjetaCredito').is(':checked')) {
       // Habilitar campos de tarjeta de crédito y deshabilitar campos de transferencia bancaria
@@ -134,7 +134,7 @@ En resumen, jQuery simplifica la selección de elementos del DOM y la manipulaci
   mostrarCarrito();
   actualizarSumaTotal();
 });
-//Punto 3.2
+//Punto 1 Mariangel
 function actualizarSumaTotal() {
   const totalEnPantallaUYU = document.getElementById("sumaTotalUYU");
   const totalEnPantallaUSD = document.getElementById("sumaTotalUSD");
@@ -208,13 +208,22 @@ const forms = document.querySelectorAll(".needs-validation");
 const checkBoxs = document.querySelectorAll(".checkMedioPago");
 const feedbackDiv = document.getElementById("terminos");
 const modalPagos = document.querySelectorAll(".modalPago");
+const compraExitosa = document.getElementById("compraExitosa");
 
-// Loop over them and prevent submission
+//Ale punto 3
 Array.from(forms).forEach((form) => {
   form.addEventListener("submit", (event) => {
     if (!form.checkValidity()) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      //Alerta de compra exitosa 
+      event.preventDefault();
+      compraExitosa.style.display = "block";
+      setTimeout(() => {
+        compraExitosa.style.display = "none";
+        window.location.reload();
+      }, 3000);
     }
 
     form.classList.add("was-validated");
