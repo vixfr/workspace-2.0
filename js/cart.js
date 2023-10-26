@@ -209,11 +209,11 @@ const checkBoxs = document.querySelectorAll(".checkMedioPago");
 const feedbackDiv = document.getElementById("terminos");
 const modalPagos = document.querySelectorAll(".modalPago");
 const compraExitosa = document.getElementById("compraExitosa");
-
+const modalform =document.getElementById("formmodal");
 //Ale punto 3
 Array.from(forms).forEach((form) => {
   form.addEventListener("submit", (event) => {
-    if (!form.checkValidity()) {
+    if (!form.checkValidity() && !modalform.checkValidity()) {
       event.preventDefault();
       event.stopPropagation();
     } else {
