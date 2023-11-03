@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
+  <link href="css/temaOscuro.css" rel="stylesheet">
   <style>
     .bd-placeholder-img {
       font-size: 1.125rem;
@@ -23,69 +24,127 @@
         font-size: 3.5rem;
       }
     }
+    .celeste{
+      color: rgb(10, 91, 89);
+    }
+
+    #imagenUsuario {
+      max-height: 150px;
+    }
+
   </style>
 </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
-    <div class="container">
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav w-100 justify-content-between">
-          <li class="nav-item">
-            <input id='searchBar' type="search" placeholder="Buscar productos...">
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-          <li class="nav-item">
-            <div class="opcionesUsuario dropdown">
-              <button class="btn btn-secondary dropdown-toggle nav-link" type="button" id="logoutButton"
-                data-bs-toggle="dropdown">
-                <!-- Contenido del botón del menú desplegable -->
-                Usuario
-              </button>
-              <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="logoutButton">
-                <li><a id="usuario" class="dropdown-item nav-link">Usuario</a></li>
-                <li><a id="carrito" class="dropdown-item nav-link">Carrito</a></li>
-                <li><a id="cerrarSesion" class="dropdown-item nav-link" href="#">Cerrar Sesión</a></li>
-                <li><a id="opcionTema" class="dropdown-item nav-link">Modo noche <i class="fa-regular fa-moon"></i></a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark p-1">
+  <div class="container fondoOscuro1">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav w-100 justify-content-between">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categorías</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
+        <li class="nav-item">
+          <div class="opcionesUsuario dropdown">
+            <button class="btn btn-secondary dropdown-toggle nav-link" type="button" id="logoutButton"
+              data-bs-toggle="dropdown">
+              <!-- Contenido del botón del menú desplegable -->
+              Usuario
+            </button>
+            <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="logoutButton">
+              <li><a id="usuario" class="dropdown-item nav-link">Usuario</a></li>
+              <li><a id="carrito" class="dropdown-item nav-link">Carrito</a></li>
+              <li><a id="cerrarSesion" class="dropdown-item nav-link" href="#">Cerrar Sesión</a></li>
+              <li><a id="opcionTema" class="dropdown-item nav-link">Modo noche <i class="fa-regular fa-moon"></i></a>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<body class="temaOscuro">
+  <main class="fondoOscuro2">
+    <div class="container pt-3">
+      <div class="row">
+        <div class="col-2 m-auto">
+          <h3 class="fondoOscuro2 backOranged celeste">Perfil</h3>
+        </div>
+        <div class="col-10 text-end">
+          <img class="img-thumbnail fondoOscuro1" id="imagenUsuario" src=".\img\usuarioDefecto.webp" alt="">
+        </div>
       </div>
     </div>
-  </nav>
 
+    <div class="container mt-0 fondoOscuro2">
+      <form class="needs-validation d-block letra-blanca" id="form" novalidate>
+        <div class="container p-0">
+          <div class="row">
+            <div class="col-lg-6 justify-content-start">
+              <label for="nombre" class="form-label p-1">Nombre *</label>
+              <input type="text" class="data form-control form-control-sm noBorde p-2" id="nombre"
+                aria-describedby="emailHelp" required>
+              <div class="invalid-feedback p-3">Debe ingresar un nombre.</div>
+            </div>
+            <div class="col-lg-6 justify-content-start">
+              <label for="segundoNombre" class="form-label p-1">Segundo nombre</label>
+              <input type="text" class="data form-control form-control-sm noBorde p-2" id="segundoNombre"
+                aria-describedby="emailHelp">
+            </div>
+            <div class="col-lg-6 justify-content-start">
+              <label for="apellido" class="form-label p-1">Apellido *</label>
+              <input type="text" class="data form-control form-control-sm noBorde p-2" id="apellido" required>
+            </div>
+            <div class="col-lg-6 justify-content-start">
+              <label for="segundoApellido" class="form-label p-1">Segundo apellido</label>
+              <input type="text" class="data form-control form-control-sm noBorde p-2" id="segundoApellido"
+                aria-describedby="emailHelp">
+            </div>
+            <div class="col-lg-6 justify-content-start mb-3">
+              <label for="email" class="form-label p-1">Email *</label>
+              <input type="email" class="data form-control form-control-sm noBorde p-2" id="email" required>
+              <div class="invalid-feedback p-3">Debe ingresar su email.</div>
+            </div>
+            <div class="col-lg-6 justify-content-start">
+              <label for="contacto" class="form-label p-1">Teléfono de contacto</label>
+              <input type="number" class="data form-control form-control-sm noBorde p-2" id="contacto">
+              <div class="invalid-feedback p-3">Debe ingresar un teléfono de contacto.</div>
+            </div>
+            <div class="col-12 justify-content-start">
+              <label for="fotoPerfil" class="form-label p-1 ">Foto de perfil</label>
+              <input class="form-control form-control-sm noBorde p-2" type="file" id="fotoPerfil" accept="image/*" onchange="mostrarImagen()"/>
 
-  <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary btnOrange letra-blanca noBorde btnTurqu my-3">
+          Guardar cambios
+        </button>
+      </form>
     </div>
   </main>
-  <footer class="text-muted">
+  <footer class="text-muted fondoOscuro1">
     <div class="container">
       <p class="float-end">
         <a href="#">Volver arriba</a>
       </p>
-      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
+      <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a>
+      </p>
     </div>
   </footer>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
   <script src="js/my-profile.js"></script>
+  <script src="js/temaOscuro.js"></script>
 </body>
 
 </html>

@@ -80,7 +80,7 @@ color: white;
 .temaOscuro .noShadow{
   box-shadow: none;
 }
-.temaOscuro #seccionVenta input,.temaOscuro #seccionVenta select,.temaOscuro #seccionVenta textarea{
+.temaOscuro #seccionVenta input,.temaOscuro #seccionVenta select,.temaOscuro #seccionVenta textarea,.temaOscuro input{
   background-color: #30353a;
   border: none;
   color: white;
