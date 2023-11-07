@@ -1,9 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     validaciones();
-
-
-
 });
+
 function validaciones() {
     const form = document.getElementById("form");
     const datos = document.querySelectorAll(".data");
@@ -37,6 +35,7 @@ function validaciones() {
 
     })
 }
+
 function mostrarImagen() {
     const fileInput = document.getElementById('fotoPerfil');
     const imagenPrevia = document.getElementById('imagenUsuario');
