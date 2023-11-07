@@ -9,31 +9,31 @@ function validaciones() {
     const imagenPrevia = document.getElementById('imagenUsuario');
     imagenPrevia.src = localStorage.getItem('imagenUsuarioSrc');
     let datosObtenidos = JSON.parse(localStorage.getItem('datosUsuario'));
+    form.addEventListener("submit", (event) => {
+        localStorage.setItem('imagenUsuarioSrc', imagenPrevia.src)
+
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+        }
+        let datosStorage = [];
+        datos.forEach((dato) => {
+            datosStorage.push(dato.value);
+        })
+
+        localStorage.setItem('datosUsuario', JSON.stringify(datosStorage));
+        event.preventDefault();
+        console.log(localStorage.getItem('datosUsuario'));
+        form.classList.add("was-validated");
+
+    })
     datos.forEach((input, index) => {
+
         if (index === 4) {
             input.value = localStorage.getItem('user');
         } else {
             input.value = datosObtenidos[index];
         }
-    })
-    
-    form.addEventListener("submit", (event) => {
-        localStorage.setItem('imagenUsuarioSrc', imagenPrevia.src)
-        
-        if (!form.checkValidity()) {
-            event.preventDefault();
-            event.stopPropagation();
-        } 
-        let datosStorage = [];
-        datos.forEach((dato) => {
-            datosStorage.push(dato.value);
-        })
-        
-        localStorage.setItem('datosUsuario',JSON.stringify(datosStorage));
-        event.preventDefault();
-        console.log(localStorage.getItem('datosUsuario'));
-        form.classList.add("was-validated");
-
     })
 }
 
