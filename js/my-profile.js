@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mostrarImagen();
 });
 
+
 function validaciones() {
     const form = document.getElementById("form");
     const datos = document.querySelectorAll(".data");
@@ -12,30 +13,34 @@ function validaciones() {
     const fileInput = document.getElementById('fotoPerfil');
 
     form.addEventListener("submit", (event) => {
-        //localStorage.setItem('imagenUsuarioSrc', imagenPrevia.src)
+        
+        //Agustín punto 1.2
         // Guardar la URL de la imagen en el localStorage
         localStorage.setItem('imagenUsuarioSrc', imagenPrevia.src);
+        //Si no se selecciona ninguna imagen, carga la imagen por defecto
         if (fileInput.files.length === 0) {
             localStorage.setItem('imagenUsuarioSrc', './img/usuarioDefecto.webp');
             mostrarImagen()
         }
+
+        //Verifica si el formulario está validado
         if (!form.checkValidity()) {
             event.preventDefault();
             event.stopPropagation();
+        } else {
+            let datosStorage = [];
+            datos.forEach((dato) => {
+                datosStorage.push(dato.value);
+            })
+            localStorage.setItem('datosUsuario', JSON.stringify(datosStorage));
+            event.preventDefault();
+            console.log(localStorage.getItem('datosUsuario'));
+            form.classList.add("was-validated");
         }
-        let datosStorage = [];
-        datos.forEach((dato) => {
-            datosStorage.push(dato.value);
-        })
-
-        localStorage.setItem('datosUsuario', JSON.stringify(datosStorage));
-        event.preventDefault();
-        console.log(localStorage.getItem('datosUsuario'));
-        form.classList.add("was-validated");
 
     })
-    datos.forEach((input, index) => {
 
+    datos.forEach((input, index) => {
         if (index === 4) {
             input.value = localStorage.getItem('user');
         } else {
@@ -64,7 +69,6 @@ function mostrarImagen() {
             }
         }
         lector.readAsDataURL(archivo); // Leer el archivo como una URL de datos
-    } 
-       //localStorage.setItem('imagenUsuarioSrc', './img/usuarioDefecto.webp');
+    }
 }
 
